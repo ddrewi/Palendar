@@ -8,5 +8,12 @@
     android:orientation="vertical">
 
 
-
+    <ToggleButton
+        android:id="@+id/testToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/togglebutton_selector"
+        android:textOff="12:00"
+        android:textOn="12:00"
+        />
 </androidx.appcompat.widget.LinearLayoutCompat>

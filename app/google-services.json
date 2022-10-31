@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "198685564982",
+    "project_id": "palendar-8aea8",
+    "storage_bucket": "palendar-8aea8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198685564982:android:8e6db6a3286a4a4e48f897",
+        "android_client_info": {
+          "package_name": "com.example.palendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198685564982-po2q7bqs3jn75hla478tfoobqk6ehn5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl0q6lmNb5XucY4X1yfM03TZYUD2BJgl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198685564982-po2q7bqs3jn75hla478tfoobqk6ehn5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

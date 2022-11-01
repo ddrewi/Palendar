@@ -8,45 +8,74 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/createEventTV"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create An Event" />
+        android:text="Create an Event"
+        android:layout_gravity="center"
+        android:theme="@style/titleTextView"
+        android:layout_marginTop="@dimen/marginTop"/>
 
     <EditText
-        android:id="@+id/eventNameET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/codeEditText"
+        android:layout_width="@dimen/editTextWidth"
+        android:layout_height="@dimen/editTextHeight"
         android:ems="10"
+        android:hint="Event Name:"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:theme="@style/editText"
+        android:layout_marginTop="@dimen/marginBetweenSmall"
+        android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/createEventTV2"
+        android:id="@+id/codeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Available Dates" />
+        android:text="Select Available Dates and Times:"
+        android:layout_gravity="center"
+        android:theme="@style/normalTextView"
+        android:layout_marginTop="@dimen/marginBetweenSmall"/>
 
-    <TableLayout
+    <!-- Selectable Calendar functionality-->
+
+
+    <TextView
+        android:id="@+id/codeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Between"
+        android:layout_gravity="center"
+        android:theme="@style/normalTextView"
+        android:layout_marginTop="@dimen/marginBetweenSmall"/>
+
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/codeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="And"
+        android:layout_gravity="center"
+        android:theme="@style/normalTextView"
+        android:layout_marginTop="@dimen/marginBetweenSmall"/>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="@dimen/largeButtonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:text="Continue"
+        android:textColor="@color/primaryTextColor"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginBetween"/>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -13,4 +13,20 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+
+    <style name="titleTextView" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textSize">@dimen/fontSizeLarge</item>
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+
+    <style name="editText" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textSize">@dimen/fontSizeMedium </item>
+        <item name="android:backgroundTint">@color/primaryColor</item>
+    </style>
+
+
+
 </resources>

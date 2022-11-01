@@ -16,4 +16,11 @@
         android:textOff="12:00"
         android:textOn="12:00"
         />
+
+    <Button
+        android:id="@+id/testButton"
+        android:background="@drawable/togglebutton_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 </androidx.appcompat.widget.LinearLayoutCompat>

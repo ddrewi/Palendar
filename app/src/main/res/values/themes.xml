@@ -21,6 +21,12 @@
         <item name="android:textColor">@color/primaryColor</item>
     </style>
 
+    <style name="normalTextView" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textSize">@dimen/fontSizeMedium</item>
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+
 
     <style name="editText" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:textSize">@dimen/fontSizeMedium </item>

@@ -7,11 +7,11 @@
     <dimen name="marginBetween">30dp</dimen>
     <dimen name="marginBetweenSmall">15dp</dimen>
 
-    <dimen name="smallButtonWidth">150dp</dimen>
+    <dimen name="smallButtonWidth">100dp</dimen>
     <dimen name="largeButtonWidth">200dp</dimen>
     <dimen name="buttonHeight">50dp</dimen>
 
-    <dimen name="editTextWidth">300dp</dimen>
+    <dimen name="editTextWidth">200dp</dimen>
     <dimen name="editTextHeight">50dp</dimen>
 
 </resources>

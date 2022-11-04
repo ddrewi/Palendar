@@ -3,7 +3,6 @@ package com.example.palendar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -11,7 +10,6 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
 
     }
 }

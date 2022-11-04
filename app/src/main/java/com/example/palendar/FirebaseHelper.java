@@ -48,15 +48,19 @@ public class FirebaseHelper {
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
 
+    private FirebaseFirestore db;
+
 
     public FirebaseHelper() {
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
     }
 
 
     public FirebaseAuth getmAuth() {
         return mAuth;
     }
+
 
     public void logOutUser() {
         mAuth.signOut();
@@ -67,4 +71,9 @@ public class FirebaseHelper {
     public void updateUid(String uid) {
         this.uid = uid;
     }
+
+
+
+
+
 }

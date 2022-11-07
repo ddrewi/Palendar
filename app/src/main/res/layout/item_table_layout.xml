@@ -11,39 +11,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+
+        <TableRow>
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/togglebutton_selector"
                 android:layout_column="1"
-                android:text="Date 1" />
+                android:textOff="12:00"
+                android:textOn="12:00"/>
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:text="Date 2" />
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="12:30"
+                android:textOn="12:30" />
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_column="3"
-                android:text="Date 2" />
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="1:00"
+                android:textOn="1:00" />
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_column="3"
-                android:text="Date 2" />
-
-            <TextView
-                android:layout_width="87dp"
-                android:layout_height="80dp"
-                android:layout_column="3"
-                android:text="Date 2" />
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="1:30"
+                android:textOn="1:30" />
 
 
         </TableRow>
@@ -53,26 +54,10 @@
             <ToggleButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/togglebutton_selector"
                 android:layout_column="1"
-                android:textOff="12:00"
-                android:textOn="12:00"/>
-
-            <ToggleButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:background="@drawable/togglebutton_selector"
-                android:layout_column="2"
-                android:textOff="12:00"
-                android:textOn="12:00"/>
-
-            <ToggleButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/togglebutton_selector"
-                android:layout_column="1"
-                android:textOff="12:00"
-                android:textOn="12:00"/>
+                android:textOff="2:00"
+                android:textOn="2:00" />
 
 
         </TableRow>
@@ -82,10 +67,88 @@
             <ToggleButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/togglebutton_selector"
                 android:layout_column="1"
-                android:textOff="12:00"
-                android:textOn="12:00"/>
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="4:00"
+                android:textOn="4:00" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="6:00"
+                android:textOn="6:00" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="2:00"
+                android:textOn="2:00" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="2:00"
+                android:textOn="2:00" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="2:00"
+                android:textOn="2:00" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="2:00"
+                android:textOn="2:00" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@drawable/togglebutton_selector"
+                android:textOff="2:00"
+                android:textOn="2:00" />
 
 
         </TableRow>

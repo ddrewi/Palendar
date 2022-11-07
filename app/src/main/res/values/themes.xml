@@ -35,4 +35,13 @@
 
 
 
+
+    <style name="CustomToggleButton" parent="android:Widget.Button.Toggle">
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:background">@drawable/togglebutton_selector</item>
+    </style>
+
+
+
 </resources>

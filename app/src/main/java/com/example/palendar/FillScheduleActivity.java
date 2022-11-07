@@ -13,25 +13,13 @@ import android.widget.ToggleButton;
 
 public class FillScheduleActivity extends AppCompatActivity {
 
-        @SuppressLint("ClickableViewAccessibility")
-        @Override
+
         protected void onCreate(Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_fill_schedule);
 
-            Button button = (Button) findViewById(R.id.testButton);
-            button.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    if(event.getAction() == MotionEvent.ACTION_UP){
 
-                        // Do what you want
-                        return true;
-                    }
-                    return false;
-                }
-            });
         }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,20 +7,16 @@
     tools:context=".FillScheduleActivity"
     android:orientation="vertical">
 
+    <GridView
+        android:id="@+id/timeOptions"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:columnCount="4"
+        android:rowCount="12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ToggleButton
-        android:id="@+id/testToggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/togglebutton_selector"
-        android:textOff="12:00"
-        android:textOn="12:00"
-        />
 
-    <Button
-        android:id="@+id/testButton"
-        android:background="@drawable/togglebutton_selector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </GridView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

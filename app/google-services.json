@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "198685564982",
-    "project_id": "palendar-8aea8",
-    "storage_bucket": "palendar-8aea8.appspot.com"
+    "project_number": "650653556252",
+    "project_id": "palendar-d179a",
+    "storage_bucket": "palendar-d179a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:198685564982:android:8e6db6a3286a4a4e48f897",
+        "mobilesdk_app_id": "1:650653556252:android:67a92b6e36ac9731e489d9",
         "android_client_info": {
           "package_name": "com.example.palendar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "198685564982-po2q7bqs3jn75hla478tfoobqk6ehn5j.apps.googleusercontent.com",
+          "client_id": "650653556252-tgnektc0f546ah5hg8pu1vm5rqeuj4ir.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDl0q6lmNb5XucY4X1yfM03TZYUD2BJgl4"
+          "current_key": "AIzaSyBYq2votYSq1PNvHOi5u9ueHY2tZ0UhUY8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "198685564982-po2q7bqs3jn75hla478tfoobqk6ehn5j.apps.googleusercontent.com",
+              "client_id": "650653556252-tgnektc0f546ah5hg8pu1vm5rqeuj4ir.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

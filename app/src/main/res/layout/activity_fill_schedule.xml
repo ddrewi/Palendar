@@ -11,12 +11,58 @@
         android:id="@+id/timeOptions"
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:columnCount="4"
-        android:rowCount="12"
+        android:rowCount="6"
+        android:numColumns="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <ToggleButton
+            android:id="@+id/toggleButton00"
+            style="@style/CustomToggleButton"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:textOff="12:00"
+            android:textOn="12:00"
+            android:layout_row="0"
+            android:layout_column="0"
+            />
+
+        <ToggleButton
+            android:id="@+id/toggleButton01"
+            style="@style/CustomToggleButton"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:textOff="12:00"
+            android:textOn="12:00"
+            android:layout_row="0"
+            android:layout_column="0"
+            />
+
+        <ToggleButton
+            android:id="@+id/toggleButton02"
+            style="@style/CustomToggleButton"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:textOff="12:00"
+            android:textOn="12:00"
+            android:layout_row="0"
+            android:layout_column="0"
+            />
+
+        <ToggleButton
+            android:id="@+id/toggleButton03"
+            style="@style/CustomToggleButton"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:textOff="12:00"
+            android:textOn="12:00"
+            android:layout_row="0"
+            android:layout_column="0"
+            />
+
 
     </GridView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

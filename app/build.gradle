@@ -42,4 +42,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     // necessary to implement firestore
     implementation 'com.google.firebase:firebase-firestore:24.3.1'
+    // necessary to implement Google Authentication through Firebase
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+
 }

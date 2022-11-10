@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Palendar</string>
 
+    <string name="default_web_client_id">650653556252-tgnektc0f546ah5hg8pu1vm5rqeuj4ir.apps.googleusercontent.com</string>
+
     <string-array name="times">
         <item>12:00</item>
         <item>12:30</item>

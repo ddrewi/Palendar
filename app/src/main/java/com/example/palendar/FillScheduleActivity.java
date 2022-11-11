@@ -32,39 +32,21 @@ public class FillScheduleActivity extends AppCompatActivity {
 
             // ArrayList<String> dataToDisplay = intent.getStringArrayListExtra(CreateEventActivity.ARRAYLIST_VALUES);
 
-            ArrayList<String> dataToDisplay = new ArrayList<String>();
+            ArrayList<Time> dataToDisplay = new ArrayList<Time>();
 
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
-            dataToDisplay.add("string1");
-            dataToDisplay.add("string2");
+            dataToDisplay.add(new Time("12:00"));
 
-            ArrayAdapter<String> listAdapter = new ArrayAdapter<>(
+            ArrayAdapter<Time> timeArrayAdapter = new ArrayAdapter<>(
                     this, android.R.layout.simple_list_item_1, dataToDisplay);
+
+            TimeAdapter myTimeAdapter = new TimeAdapter(this, dataToDisplay);
 
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, dataToDisplay);
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, dataToDisplay);
 
-            gridView.setAdapter(adapter);
-
-//            for(int i = 0; i < dataToDisplay.size(); i++){
-//                ToggleButton toggleButton = findViewById(R.id.toggleButton00
-//                toggleButton.setTextOff(dataToDisplay.get(i));
-//                toggleButton.setTextOff(dataToDisplay.get(i));
-//            }
+//            gridView.setAdapter(adapter);
+            
 
 
         }

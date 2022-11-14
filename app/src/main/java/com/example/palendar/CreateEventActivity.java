@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -13,10 +16,26 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public static final String ARRAYLIST_VALUES = "Data to display in gridView";
 
+    Spinner spinner1;
+    Spinner spinner2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
+
+
+        spinner1 = findViewById(R.id.time1Spinner);
+        spinner2 = findViewById(R.id.time2Spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.item_custom_spinner_dropdown, getResources().getStringArray(R.array.times));
+
+        spinner1.setAdapter(adapter);
+        spinner2.setAdapter(adapter);
+
+        // spinner1.setOnItemSelectedListener(this);
+        // spinner2.setOnItemSelectedListener(this);
 
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> listView,
@@ -36,5 +55,14 @@ public class CreateEventActivity extends AppCompatActivity {
 
             }
         };
+
     }
+
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+    // This method is required, even if empty, for the OnItemSelectedListener to work
+
+    public void onNothingSelected(AdapterView<?> parent) { }
 }

@@ -17,7 +17,7 @@
         android:layout_marginTop="@dimen/marginTop"/>
 
     <EditText
-        android:id="@+id/codeEditText"
+        android:id="@+id/eventNameET"
         android:layout_width="@dimen/editTextWidth"
         android:layout_height="@dimen/editTextHeight"
         android:ems="10"
@@ -40,7 +40,7 @@
 
 
     <TextView
-        android:id="@+id/codeTextView"
+        android:id="@+id/codeTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Between"
@@ -49,12 +49,15 @@
         android:layout_marginTop="@dimen/marginBetweenSmall"/>
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/time1Spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        />
 
     <TextView
-        android:id="@+id/codeTextView"
+        android:id="@+id/codeTextView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="And"
@@ -63,18 +66,20 @@
         android:layout_marginTop="@dimen/marginBetweenSmall"/>
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/time2Spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/createEventButton"
         android:layout_width="@dimen/largeButtonWidth"
         android:layout_height="@dimen/buttonHeight"
-        android:text="Continue"
-        android:textColor="@color/primaryTextColor"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/marginBetween"/>
+        android:layout_marginTop="@dimen/marginBetween"
+        android:text="Create Event"
+        android:textColor="@color/primaryTextColor" />
 
 
 

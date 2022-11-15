@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public static final String ARRAYLIST_VALUES = "Data to display in gridView";
 
+    EditText eventNameET;
     Spinner spinner1;
     Spinner spinner2;
 
@@ -25,7 +27,7 @@ public class CreateEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
-
+        eventNameET = findViewById(R.id.eventNameET);
         spinner1 = findViewById(R.id.time1Spinner);
         spinner2 = findViewById(R.id.time2Spinner);
 
@@ -56,6 +58,10 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         };
 
+    }
+
+    public void createEvent(View view){
+        Event event = new Event(eventNameET.toString(),spinner1.toString(), spinner2.toString());
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -62,6 +63,10 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public void createEvent(View view){
         Event event = new Event(eventNameET.toString(),spinner1.toString(), spinner2.toString());
+        Log.d("Ariagno", "Event Created");
+
+        Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
+        startActivity(intent);
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

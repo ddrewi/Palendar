@@ -1,5 +1,7 @@
 package com.example.palendar;
 
+import java.util.ArrayList;
+
 public class Event {
     private String name;
     private String time1;
@@ -10,6 +12,9 @@ public class Event {
         this.time1 = time1;
         this.time2 = time2;
     }
+
+
+
 
 
 

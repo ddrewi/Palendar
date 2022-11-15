@@ -99,7 +99,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginBetween"
         android:text="Create Event"
-        android:textColor="@color/primaryTextColor" />
+        android:textColor="@color/primaryTextColor"
+        android:onClick="createEvent"
+        />
 
     <ImageView
         android:id="@+id/imageView"

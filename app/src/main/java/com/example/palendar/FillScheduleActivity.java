@@ -52,14 +52,37 @@ public class FillScheduleActivity extends AppCompatActivity {
         }
 
 
+    public ArrayList<String> getTimes(String time1, String time2){
+        int firstTimeIndex = 0;
+        int secondTimeIndex = 0;
+
+        ArrayList<String> timesToDisplay = new ArrayList<>();
+        String[] timeStrings = getResources().getStringArray(R.array.times);
 
 
 
-//    ToggleButton toggleButton = (ToggleButton) findViewById(R.id.testToggleButton);
-//    View.OnHoverListener
-//    toggleButton.(new View.OnClickListener() {
-//        public void onClick(View v) {
-//            startActivity(new Intent(MainActivity.this,StandingsActivity.class));
-//        }
-//    });
+        for(int i = 0; i < timeStrings.length; i++){
+            if(time1.equals(timeStrings[i])){
+                firstTimeIndex = i;
+            } else if(time2.equals(timeStrings[i])){
+                secondTimeIndex = i;
+            }
+        }
+
+        if(firstTimeIndex < secondTimeIndex){
+            for(int i = firstTimeIndex; i < secondTimeIndex; i++){
+                timesToDisplay.add(timeStrings[i]);
+            }
+        }else{
+            for(int i = firstTimeIndex; i <timeStrings.length; i++){
+                timesToDisplay.add(timeStrings[i]);
+            }
+            for(int i = 0; i < secondTimeIndex; i++){
+                timesToDisplay.add(timeStrings[i]);
+            }
+        }
+
+        return timesToDisplay;
+    }
+
 }

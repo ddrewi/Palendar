@@ -46,10 +46,9 @@ public class CreateEventActivity extends AppCompatActivity {
                 Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
 
 
-                // create an ArrayList of whatever type of data you are displaying in this app
-                // In this particular app, everything is centralized around the Food class.
-                ArrayList<String> listData = new ArrayList<>();
+                ArrayList<String> listData;
 
+                listData = getTimes(spinner1.toString(),spinner2.toString());
 
                 // Send this particular ArrayList of Food data to the next activity, where we display
                 // each name of each object in the ArrayList.
@@ -59,6 +58,39 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         };
 
+    }
+
+    public ArrayList<String> getTimes(String time1, String time2){
+        int firstTimeIndex = 0;
+        int secondTimeIndex = 0;
+
+        ArrayList<String> timesToDisplay = new ArrayList<>();
+        String[] timeStrings = getResources().getStringArray(R.array.times);
+
+
+
+        for(int i = 0; i < timeStrings.length; i++){
+            if(time1.equals(timeStrings[i])){
+                firstTimeIndex = i;
+            } else if(time2.equals(timeStrings[i])){
+                secondTimeIndex = i;
+            }
+        }
+
+        if(firstTimeIndex < secondTimeIndex){
+            for(int i = firstTimeIndex; i < secondTimeIndex; i++){
+                timesToDisplay.add(timeStrings[i]);
+            }
+        }else{
+            for(int i = firstTimeIndex; i <timeStrings.length; i++){
+                timesToDisplay.add(timeStrings[i]);
+            }
+            for(int i = 0; i < secondTimeIndex; i++){
+                timesToDisplay.add(timeStrings[i]);
+            }
+        }
+
+        return timesToDisplay;
     }
 
     public void createEvent(View view){

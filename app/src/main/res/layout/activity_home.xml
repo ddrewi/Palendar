@@ -7,59 +7,31 @@
     tools:context=".HomeActivity"
     android:orientation="vertical">
 
+    <!-- temporary -->
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/wel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upcoming Events"
-        android:layout_gravity="center"
-        android:theme="@style/titleTextView"
-        android:layout_marginTop="@dimen/marginTop"/>
-
-
-    <!-- needs some sort of spinner or list to select events-->
-
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:text="Create an Event"
-        android:textColor="@color/primaryTextColor"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/marginBetween"/>
+        android:text="TextView" />
 
     <TextView
-        android:id="@+id/codeTextView"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Have a Code?"
-        android:layout_gravity="center"
-        android:theme="@style/normalTextView"
-        android:layout_marginTop="@dimen/marginBetween"/>
+        android:text="TextView" />
 
-    <EditText
-        android:id="@+id/codeEditText"
-        android:layout_width="@dimen/editTextWidth"
-        android:layout_height="@dimen/editTextHeight"
-        android:ems="10"
-        android:hint="Join Code:"
-        android:inputType="textPersonName"
-        android:theme="@style/editText"
-        android:layout_marginTop="@dimen/marginBetweenSmall"
-        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="@dimen/smallButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:text="Join"
-        android:textColor="@color/primaryTextColor"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/marginBetweenSmall"/>
-
-
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

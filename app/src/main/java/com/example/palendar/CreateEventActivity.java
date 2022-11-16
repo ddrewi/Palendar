@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class CreateEventActivity extends AppCompatActivity {
 
     public static final String ARRAYLIST_VALUES = "Data to display in gridView";
+    private static final String TAG = "ARIAGNO";
 
     EditText eventNameET;
     Spinner spinner1;
@@ -63,26 +64,27 @@ public class CreateEventActivity extends AppCompatActivity {
     public ArrayList<String> getTimes(String time1, String time2){
         int firstTimeIndex = 0;
         int secondTimeIndex = 0;
-
+        Spinner t1Spinner = findViewById(R.id.time1Spinner);
+        Spinner t2Spinner = findViewById(R.id.time2Spinner);
+        String t1SpinnerText = t1Spinner.getSelectedItem().toString();
+        String t2SpinnerText = t2Spinner.getSelectedItem().toString();
         ArrayList<String> timesToDisplay = new ArrayList<>();
         String[] timeStrings = getResources().getStringArray(R.array.times);
 
-
-
         for(int i = 0; i < timeStrings.length; i++){
-            if(time1.equals(timeStrings[i])){
+            if(t1SpinnerText.equals(timeStrings[i])){
                 firstTimeIndex = i;
-            } else if(time2.equals(timeStrings[i])){
+            } else if(t2SpinnerText.equals(timeStrings[i])){
                 secondTimeIndex = i;
             }
         }
 
-        if(firstTimeIndex < secondTimeIndex){
+        if(firstTimeIndex <= secondTimeIndex){
             for(int i = firstTimeIndex; i < secondTimeIndex; i++){
                 timesToDisplay.add(timeStrings[i]);
             }
         }else{
-            for(int i = firstTimeIndex; i <timeStrings.length; i++){
+            for(int i = firstTimeIndex; i < timeStrings.length; i++){
                 timesToDisplay.add(timeStrings[i]);
             }
             for(int i = 0; i < secondTimeIndex; i++){
@@ -100,7 +102,7 @@ public class CreateEventActivity extends AppCompatActivity {
         ArrayList<String> timesToDisplay = getTimes(time1, time2);
 
         Event event = new Event(eventName, time1, time2, timesToDisplay);
-        Log.d("Ariagno", "Event Created");
+        Log.d(TAG, "Event Created");
 
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);

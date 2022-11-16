@@ -41,9 +41,9 @@ public class TimeAdapter extends ArrayAdapter<Time> {
 //        foodNameTV.setText(myFood.getName());
 //        foodPriceTV.setText("$" + myFood.getPrice());
 //        foodDescTV.setText(myFood.getDesc());
-
-        timeToggleButton.setTextOn(myTime.getTime());
         timeToggleButton.setTextOff(myTime.getTime());
+        timeToggleButton.setTextOn(myTime.getTime());
+
         // Return the completed view to render on screen
         return convertView;
     }

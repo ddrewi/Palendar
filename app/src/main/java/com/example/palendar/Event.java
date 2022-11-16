@@ -9,11 +9,11 @@ public class Event {
     private String time2;
     private ArrayList<String> timesToDisplay;
 
-    public Event(String name, String time1, String time2){
+    public Event(String name, String time1, String time2, ArrayList<String> timesToDisplay){
         this.name = name;
         this.time1 = time1;
         this.time2 = time2;
-
+        this.timesToDisplay = timesToDisplay;
 
     }
 

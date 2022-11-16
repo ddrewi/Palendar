@@ -27,7 +27,6 @@ public class FillScheduleActivity extends AppCompatActivity {
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_fill_schedule);
-
             Intent intent = getIntent();
 
             ArrayList<String> dataToDisplay = intent.getStringArrayListExtra(CreateEventActivity.ARRAYLIST_VALUES);
@@ -35,10 +34,10 @@ public class FillScheduleActivity extends AppCompatActivity {
             ArrayAdapter<String> listAdapter = new ArrayAdapter<>(
                     this, android.R.layout.simple_list_item_1, dataToDisplay);
 
-
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
 
             gridView.setAdapter(listAdapter);
+
 
 //            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, dataToDisplay);
 //

@@ -94,10 +94,17 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     public void createEvent(View view){
-        Event event = new Event(eventNameET.toString(),spinner1.toString(), spinner2.toString());
+        String eventName = eventNameET.toString();
+        String time1 = spinner1.toString();
+        String time2 = spinner2.toString();
+        ArrayList<String> timesToDisplay = getTimes(time1, time2);
+
+        Event event = new Event(eventName, time1, time2, timesToDisplay);
         Log.d("Ariagno", "Event Created");
 
+
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
+        intent.putStringArrayListExtra(ARRAYLIST_VALUES, timesToDisplay);
         startActivity(intent);
     }
 

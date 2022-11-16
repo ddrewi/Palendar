@@ -26,50 +26,19 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginBetween"/>
 
-    <EditText
-        android:id="@+id/userNameEditText"
-        android:layout_width="@dimen/editTextWidth"
-        android:layout_height="@dimen/editTextHeight"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:theme="@style/editText"
-        android:layout_marginTop="@dimen/marginBetween"
-        android:layout_gravity="center"/>
-
     <!-- password needs to be hidden -->
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="@dimen/editTextWidth"
-        android:layout_height="@dimen/editTextHeight"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:theme="@style/editText"
-        android:layout_marginTop="@dimen/marginBetweenSmall"
-        android:layout_gravity="center"/>
 
 
     <Button
-        android:id="@+id/logInButton"
-        android:layout_width="@dimen/smallButtonWidth"
+        android:id="@+id/google"
+        android:src="@drawable/google"
+        android:layout_width="@dimen/largeButtonWidth"
         android:layout_height="@dimen/buttonHeight"
-        android:text="Log In"
+        android:text="Log In With Google"
         android:textColor="@color/primaryTextColor"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginBetween"
        />
-
-    <Button
-        android:id="@+id/SignUpButton"
-        android:layout_width="@dimen/smallButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:text="Sign Up"
-        android:textColor="@color/primaryTextColor"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/marginBetweenSmall"
-        />
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -41,23 +41,23 @@ public class CreateEventActivity extends AppCompatActivity {
         // spinner1.setOnItemSelectedListener(this);
         // spinner2.setOnItemSelectedListener(this);
 
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> listView,
-                                    View itemView, int position, long id) {
-                Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
-
-
-                ArrayList<String> listData;
-
-                listData = getTimes(spinner1.toString(),spinner2.toString());
-
-                // Send this particular ArrayList of Food data to the next activity, where we display
-                // each name of each object in the ArrayList.
-                intent.putStringArrayListExtra(ARRAYLIST_VALUES, listData);
-                startActivity(intent);
-
-            }
-        };
+//        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> listView,
+//                                    View itemView, int position, long id) {
+//                Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
+//
+//
+//                ArrayList<String> listData;
+//
+//                listData = getTimes(spinner1.toString(),spinner2.toString());
+//
+//                // Send this particular ArrayList of Food data to the next activity, where we display
+//                // each name of each object in the ArrayList.
+//                intent.putStringArrayListExtra(ARRAYLIST_VALUES, listData);
+//                startActivity(intent);
+//
+//            }
+//        };
 
     }
 
@@ -101,20 +101,27 @@ public class CreateEventActivity extends AppCompatActivity {
         String time2 = spinner2.toString();
         ArrayList<String> timesToDisplay = getTimes(time1, time2);
 
-        Event event = new Event(eventName, time1, time2, timesToDisplay);
+        ArrayList<Time> timeList = new ArrayList<>();
+
+        for(int i = 0; i < timesToDisplay.size(); i++){
+            timeList.add(new Time(timesToDisplay.get(i)));
+        }
+
+        Event event = new Event(eventName, time1, time2, timeList);
         Log.d(TAG, "Event Created");
 
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
-        intent.putStringArrayListExtra(ARRAYLIST_VALUES, timesToDisplay);
+        //intent.putParcelableArrayListExtra(ARRAYLIST_VALUES, timeList);
+        intent.putExtra(ARRAYLIST_VALUES, event);
         startActivity(intent);
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-    }
-    // This method is required, even if empty, for the OnItemSelectedListener to work
-
-    public void onNothingSelected(AdapterView<?> parent) { }
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        String text = parent.getItemAtPosition(position).toString();
+//        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+//    }
+//    // This method is required, even if empty, for the OnItemSelectedListener to work
+//
+//    public void onNothingSelected(AdapterView<?> parent) { }
 }

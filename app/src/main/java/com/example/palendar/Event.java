@@ -1,21 +1,43 @@
 package com.example.palendar;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Event {
+public class Event implements Parcelable {
     private String name;
     private String time1;
     private String time2;
-    private ArrayList<String> timesToDisplay;
+    private ArrayList<Time> times;
 
-    public Event(String name, String time1, String time2, ArrayList<String> timesToDisplay){
+    public Event(String name, String time1, String time2, ArrayList<Time> times){
         this.name = name;
         this.time1 = time1;
         this.time2 = time2;
-        this.timesToDisplay = timesToDisplay;
+        this.times = times;
 
     }
+
+    protected Event(Parcel in) {
+        name = in.readString();
+        time1 = in.readString();
+        time2 = in.readString();
+        times = in.createTypedArrayList(Time.CREATOR);
+    }
+
+    public static final Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel in) {
+            return new Event(in);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -39,5 +61,26 @@ public class Event {
 
     public void setTime2(String time2) {
         this.time2 = time2;
+    }
+
+    public ArrayList<Time> getTimes() {
+        return times;
+    }
+
+    public void setTimes(ArrayList<Time> times) {
+        this.times = times;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(time1);
+        dest.writeString(time2);
+        dest.writeTypedList(times);
     }
 }

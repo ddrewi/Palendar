@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class FillScheduleActivity extends AppCompatActivity {
 
+        Event myEvent;
 
         protected void onCreate(Bundle savedInstanceState)
         {
@@ -29,15 +30,15 @@ public class FillScheduleActivity extends AppCompatActivity {
             setContentView(R.layout.activity_fill_schedule);
             Intent intent = getIntent();
 
-            ArrayList<String> dataToDisplay = intent.getStringArrayListExtra(CreateEventActivity.ARRAYLIST_VALUES);
+            //ArrayList<Time> dataToDisplay = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
+            myEvent = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
+//            ArrayList<Time> timeList = new ArrayList<>();
+//
+//            for(int i = 0; i < dataToDisplay.size(); i++){
+//                timeList.add(new Time(dataToDisplay.get(i)));
+//            }
 
-            ArrayList<Time> timeList = new ArrayList<>();
-
-            for(int i = 0; i < dataToDisplay.size(); i++){
-                timeList.add(new Time(dataToDisplay.get(i)));
-            }
-
-            ArrayAdapter<Time> timeArrayAdapter = new TimeAdapter(this, timeList);
+            TimeAdapter timeArrayAdapter = new TimeAdapter(this, myEvent.getTimes());
 
 //            ArrayAdapter<String> listAdapter = new ArrayAdapter<>(
 //                    this, android.R.layout.simple_list_item_1, dataToDisplay);
@@ -46,47 +47,22 @@ public class FillScheduleActivity extends AppCompatActivity {
 
             gridView.setAdapter(timeArrayAdapter);
 
+        }
 
-//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, dataToDisplay);
-//
-//            gridView.setAdapter(adapter);
-            
+        public void setTimes(View view){
+            GridView gridView = (GridView) findViewById(R.id.timeOptions);
 
+            for(int i = 0; i < gridView.getChildCount(); i++){
+                ToggleButton toggleButton = (ToggleButton) gridView.getChildAt(i);
+                myEvent.getTimes().get(i).setChecked(toggleButton.isChecked());
+            }
+
+            Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);
+            startActivity(intent);
 
         }
 
 
-    public ArrayList<String> getTimes(String time1, String time2){
-        int firstTimeIndex = 0;
-        int secondTimeIndex = 0;
 
-        ArrayList<String> timesToDisplay = new ArrayList<>();
-        String[] timeStrings = getResources().getStringArray(R.array.times);
-
-
-
-        for(int i = 0; i < timeStrings.length; i++){
-            if(time1.equals(timeStrings[i])){
-                firstTimeIndex = i;
-            } else if(time2.equals(timeStrings[i])){
-                secondTimeIndex = i;
-            }
-        }
-
-        if(firstTimeIndex < secondTimeIndex){
-            for(int i = firstTimeIndex; i < secondTimeIndex; i++){
-                timesToDisplay.add(timeStrings[i]);
-            }
-        }else{
-            for(int i = firstTimeIndex; i <timeStrings.length; i++){
-                timesToDisplay.add(timeStrings[i]);
-            }
-            for(int i = 0; i < secondTimeIndex; i++){
-                timesToDisplay.add(timeStrings[i]);
-            }
-        }
-
-        return timesToDisplay;
-    }
 
 }

@@ -30,17 +30,10 @@ public class TimeAdapter extends ArrayAdapter<Time> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_toggle_button, parent, false);
 
         }
-        // Lookup view for data population
-//        TextView foodNameTV = (TextView) convertView.findViewById(R.id.foodName);
-//        TextView foodPriceTV = (TextView) convertView.findViewById(R.id.priceTV);
-//        TextView foodDescTV = (TextView) convertView.findViewById(R.id.descriptionTV);
 
         ToggleButton timeToggleButton = (ToggleButton) convertView.findViewById(R.id.itemToggleButton);
 
-        // Populate the data into the template view using the data object
-//        foodNameTV.setText(myFood.getName());
-//        foodPriceTV.setText("$" + myFood.getPrice());
-//        foodDescTV.setText(myFood.getDesc());
+        timeToggleButton.setText(myTime.getTime());
         timeToggleButton.setTextOff(myTime.getTime());
         timeToggleButton.setTextOn(myTime.getTime());
 

@@ -68,7 +68,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivtyResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode==100){

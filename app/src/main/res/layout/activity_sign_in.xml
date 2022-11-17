@@ -29,16 +29,13 @@
     <!-- password needs to be hidden -->
 
 
-    <Button
+
+
+    <ImageView
         android:id="@+id/google"
-        android:src="@drawable/google"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:text="Log In With Google"
-        android:textColor="@color/primaryTextColor"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/marginBetween"
-       />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/google" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

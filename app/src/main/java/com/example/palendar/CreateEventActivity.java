@@ -1,5 +1,6 @@
 package com.example.palendar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,11 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class CreateEventActivity extends AppCompatActivity {
 
@@ -22,6 +27,8 @@ public class CreateEventActivity extends AppCompatActivity {
     EditText eventNameET;
     Spinner spinner1;
     Spinner spinner2;
+    CalendarView calendarView;
+    String date;
 
 
     @Override
@@ -32,11 +39,22 @@ public class CreateEventActivity extends AppCompatActivity {
         eventNameET = findViewById(R.id.eventNameET);
         spinner1 = findViewById(R.id.time1Spinner);
         spinner2 = findViewById(R.id.time2Spinner);
+        calendarView = findViewById(R.id.calendarView);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.item_custom_spinner_dropdown, getResources().getStringArray(R.array.times));
 
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
+
+        CalendarView.OnDateChangeListener dateChangeListener = new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                //String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                String selectedDate = "" + year + month + dayOfMonth;
+                Log.d(TAG, "New date Selected: " + selectedDate);
+                date = selectedDate;
+            }
+        };
 
         // spinner1.setOnItemSelectedListener(this);
         // spinner2.setOnItemSelectedListener(this);
@@ -99,6 +117,7 @@ public class CreateEventActivity extends AppCompatActivity {
         String eventName = eventNameET.toString();
         String time1 = spinner1.toString();
         String time2 = spinner2.toString();
+
         ArrayList<String> timesToDisplay = getTimes(time1, time2);
 
         ArrayList<Time> timeList = new ArrayList<>();
@@ -107,8 +126,8 @@ public class CreateEventActivity extends AppCompatActivity {
             timeList.add(new Time(timesToDisplay.get(i)));
         }
 
-        Event event = new Event(eventName, time1, time2, timeList);
-        Log.d(TAG, "Event Created");
+        Event event = new Event(eventName, time1, time2, date, timeList);
+        Log.d(TAG, "Event Created" + date);
 
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);

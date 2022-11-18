@@ -27,6 +27,13 @@
         android:layout_marginTop="@dimen/marginBetweenSmall"
         android:layout_gravity="center"/>
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true" />
+
 <!--    <TextView-->
 <!--        android:id="@+id/codeTextView"-->
 <!--        android:textStyle="bold"-->

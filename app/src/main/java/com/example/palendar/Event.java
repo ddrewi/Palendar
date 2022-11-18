@@ -10,20 +10,22 @@ public class Event implements Parcelable {
     private String name;
     private String time1;
     private String time2;
+    private String date;
     private ArrayList<Time> times;
 
-    public Event(String name, String time1, String time2, ArrayList<Time> times){
+    public Event(String name, String time1, String time2, String date, ArrayList<Time> times){
         this.name = name;
         this.time1 = time1;
         this.time2 = time2;
         this.times = times;
-
+        this.date = date;
     }
 
     protected Event(Parcel in) {
         name = in.readString();
         time1 = in.readString();
         time2 = in.readString();
+        date = in.readString();
         times = in.createTypedArrayList(Time.CREATOR);
     }
 
@@ -69,6 +71,14 @@ public class Event implements Parcelable {
 
     public void setTimes(ArrayList<Time> times) {
         this.times = times;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override

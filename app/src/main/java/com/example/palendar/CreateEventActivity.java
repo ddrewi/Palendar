@@ -46,46 +46,28 @@ public class CreateEventActivity extends AppCompatActivity {
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
 
-        CalendarView.OnDateChangeListener dateChangeListener = new CalendarView.OnDateChangeListener() {
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 //String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                String selectedDate = "" + year + month + dayOfMonth;
+                String selectedDate = "" + dayOfMonth + "/" + month + "/" + year;
                 Log.d(TAG, "New date Selected: " + selectedDate);
                 date = selectedDate;
             }
-        };
+        });
 
-        // spinner1.setOnItemSelectedListener(this);
-        // spinner2.setOnItemSelectedListener(this);
-
-//        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> listView,
-//                                    View itemView, int position, long id) {
-//                Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
-//
-//
-//                ArrayList<String> listData;
-//
-//                listData = getTimes(spinner1.toString(),spinner2.toString());
-//
-//                // Send this particular ArrayList of Food data to the next activity, where we display
-//                // each name of each object in the ArrayList.
-//                intent.putStringArrayListExtra(ARRAYLIST_VALUES, listData);
-//                startActivity(intent);
-//
-//            }
-//        };
 
     }
 
-    public ArrayList<String> getTimes(String time1, String time2){
+    public ArrayList<String> getTimes(){
         int firstTimeIndex = 0;
         int secondTimeIndex = 0;
         Spinner t1Spinner = findViewById(R.id.time1Spinner);
         Spinner t2Spinner = findViewById(R.id.time2Spinner);
+
         String t1SpinnerText = t1Spinner.getSelectedItem().toString();
         String t2SpinnerText = t2Spinner.getSelectedItem().toString();
+
         ArrayList<String> timesToDisplay = new ArrayList<>();
         String[] timeStrings = getResources().getStringArray(R.array.times);
 
@@ -118,7 +100,7 @@ public class CreateEventActivity extends AppCompatActivity {
         String time1 = spinner1.toString();
         String time2 = spinner2.toString();
 
-        ArrayList<String> timesToDisplay = getTimes(time1, time2);
+        ArrayList<String> timesToDisplay = getTimes();
 
         ArrayList<Time> timeList = new ArrayList<>();
 

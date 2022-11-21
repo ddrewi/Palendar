@@ -7,23 +7,36 @@
     tools:context=".FillScheduleActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView"
+        style="@style/titleTextView"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Availability"
+        android:layout_marginTop="30dp"/>
+
     <GridView
         android:id="@+id/timeOptions"
-        android:layout_width="400dp"
-        android:layout_height="240dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:numColumns="4"
-        android:rowCount="6">
+        android:rowCount="6"
+        android:layout_marginTop="30dp"
+        >
 
     </GridView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submitAvailabilityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="30dp"
         android:onClick="setTimes"
-        android:text="Continue" />
+        android:text="Submit"
+        android:textColor="@color/white"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

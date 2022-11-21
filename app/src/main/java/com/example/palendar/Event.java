@@ -91,6 +91,7 @@ public class Event implements Parcelable {
         dest.writeString(name);
         dest.writeString(time1);
         dest.writeString(time2);
+        dest.writeString(date);
         dest.writeTypedList(times);
     }
 }

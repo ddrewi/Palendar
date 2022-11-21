@@ -15,57 +15,45 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
-    TextView name,mail;
-    Button logout;
+    // Followed this tutorial for this activity
+    // Does a great job not just writing, but also explaining the code
+    // https://www.youtube.com/watch?v=bBJF1M5h_UU
 
-    GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
+
+
+    TextView name, mail;
+    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        name=findViewById(R.id.name);
-        mail=findViewById(R.id.mail);
-        logout=findViewById(R.id.logout);
-
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
+        logout = findViewById(R.id.logout);
+        name = findViewById(R.id.name);
+        mail = findViewById(R.id.mail);
 
 
-        gsc = GoogleSignIn.getClient(this, gso);
-
-        GoogleSignInAccount account=GoogleSignIn.getLastSignedInAccount(this);
-        if (account !=null) {
-            String Name=account.getDisplayName();
-            String Mail=account.getEmail();
-
-            name.setText(Name);
-            mail.setText(Mail);
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if(signInAccount != null){
+            name.setText(signInAccount.getDisplayName());
+            mail.setText(signInAccount.getEmail());
         }
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
-                SignOut();
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(),SignInActivity   .class);
+                startActivity(intent);
             }
         });
 
     }
 
 
-    private void SignOut() {
-        gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                finish();
-                startActivity(new Intent(getApplicationContext(), SignInActivity.class));
-            }
-        });
-    }
 }

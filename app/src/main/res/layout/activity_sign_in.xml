@@ -17,14 +17,13 @@
         android:theme="@style/titleTextView"
         android:layout_marginTop="@dimen/marginTop"/>
 
-    <!-- to be replaced with logo -->
     <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars"
+        android:id="@+id/logoImage"
+        android:layout_width="@dimen/imageDimens"
+        android:layout_height="@dimen/imageDimens"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/marginBetween"/>
+        android:layout_marginTop="@dimen/marginBetweenSmall"
+        app:srcCompat="@drawable/palendar_icon" />
 
     <Button
         android:id="@+id/google_signIn"
@@ -35,7 +34,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginBetween"/>
 
-    <!-- password needs to be hidden -->
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

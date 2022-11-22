@@ -34,6 +34,8 @@
         <item name="android:textSize">@dimen/fontSizeMedium </item>
         <item name="android:backgroundTint">@color/primaryColor</item>
         <item name="android:fontFamily">@font/alef</item>
+        <item name="android:layout_height">@dimen/editTextHeight</item>
+        <item name="android:layout_width">@dimen/editTextWidth</item>
     </style>
 
 

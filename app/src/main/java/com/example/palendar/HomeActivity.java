@@ -33,15 +33,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        logout = findViewById(R.id.logout);
-        name = findViewById(R.id.name);
-        mail = findViewById(R.id.mail);
+        //logout = findViewById(R.id.logout);
+        //name = findViewById(R.id.name);
+        //mail = findViewById(R.id.mail);
 
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null){
-            name.setText(signInAccount.getDisplayName());
-            mail.setText(signInAccount.getEmail());
+            //name.setText(signInAccount.getDisplayName());
+            //mail.setText(signInAccount.getEmail());
         }
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +53,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void createEvent (View view) {
+        Intent intent = new Intent(HomeActivity.this, CreateEventActivity.class);
+        startActivity(intent);
     }
 
 

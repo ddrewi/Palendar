@@ -7,27 +7,68 @@
     tools:context=".HomeActivity"
     android:orientation="vertical">
 
-    <!-- temporary -->
-
-
-
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/upcomingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Upcoming Events"
+        android:layout_gravity="center"
+        style="@style/titleTextView"
+        android:layout_marginTop="@dimen/marginTop"/>
 
-    <TextView
-        android:id="@+id/mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+
+    <!-- events should ideally be a spinner -->
 
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/eventButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Button" />
+
+    <Button
+        android:id="@+id/eventButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/createEventButton"
+        android:layout_width="@dimen/largeButtonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:text="Create an Event"
+        android:layout_gravity="center"
+        android:textColor="@color/primaryTextColor"
+        android:layout_marginTop="@dimen/marginBetween"/>
+
+    <TextView
+        android:id="@+id/codeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Have a code?"
+        style="@style/normalTextView"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginBetween"/>
+
+    <EditText
+        android:id="@+id/joinCodeEditText"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter Code:"
+        style="@style/editText"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginBetweenSmall"/>
+
+    <Button
+        android:id="@+id/joinButton"
+        android:layout_width="@dimen/smallButtonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:text="Join"
+        android:textColor="@color/primaryTextColor"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginBetweenSmall"
+        android:onClick="createEvent"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

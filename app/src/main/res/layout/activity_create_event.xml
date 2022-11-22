@@ -70,7 +70,7 @@
             android:layout_marginStart="12dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/primaryDarkColor"
-            android:backgroundTintMode="add"
+
             />
 
         <TextView
@@ -109,16 +109,6 @@
         android:textColor="@color/primaryTextColor"
         android:onClick="createEvent"
         />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_marginTop="70dp"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/palendar_icon" />
-
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

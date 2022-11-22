@@ -28,6 +28,7 @@ public class CreateEventActivity extends AppCompatActivity {
     Spinner spinner1;
     Spinner spinner2;
     CalendarView calendarView;
+    String todayDate;
     String date;
 
 

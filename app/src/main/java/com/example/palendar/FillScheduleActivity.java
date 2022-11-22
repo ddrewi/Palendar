@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class FillScheduleActivity extends AppCompatActivity {
 
+        public static final String EVENT_VALUE = "Event Data";
+
         Event myEvent;
 
         protected void onCreate(Bundle savedInstanceState)
@@ -58,6 +60,7 @@ public class FillScheduleActivity extends AppCompatActivity {
             }
 
             Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);
+            intent.putExtra(EVENT_VALUE, myEvent);
             startActivity(intent);
 
         }

@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends AppCompatActivity {
 
     // Followed this tutorial for this activity
-    // Does a great job not just writing, but also explaining the code
+    // Does a great job explaining the code
     // https://www.youtube.com/watch?v=bBJF1M5h_UU
 
 
@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //logout = findViewById(R.id.logout);
+        logout = findViewById(R.id.logout);
         //name = findViewById(R.id.name);
         //mail = findViewById(R.id.mail);
 

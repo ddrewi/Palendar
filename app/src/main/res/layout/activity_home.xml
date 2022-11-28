@@ -40,7 +40,8 @@
         android:text="Create an Event"
         android:layout_gravity="center"
         android:textColor="@color/primaryTextColor"
-        android:layout_marginTop="@dimen/marginBetween"/>
+        android:layout_marginTop="@dimen/marginBetween"
+        android:onClick="createEvent"/>
 
     <TextView
         android:id="@+id/codeText"
@@ -67,8 +68,16 @@
         android:text="Join"
         android:textColor="@color/primaryTextColor"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/marginBetweenSmall"
-        android:onClick="createEvent"/>
+        android:layout_marginTop="@dimen/marginBetweenSmall" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="@dimen/smallButtonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:text="Logout"
+        android:textColor="@color/primaryTextColor"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginBetweenSmall" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

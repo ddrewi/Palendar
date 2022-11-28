@@ -37,7 +37,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class SignInActivity extends AppCompatActivity {
 
     // Followed this tutorial for this activity
-    // Does a great job not just writing, but also explaining the code
+    // Does a great job explaining the code
     // https://www.youtube.com/watch?v=bBJF1M5h_UU
 
 

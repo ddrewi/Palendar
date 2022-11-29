@@ -47,19 +47,64 @@ public class FirebaseHelper {
     public final String TAG = "Firebase";
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
-    // we don't need this yet
-    // private ArrayList<Memory> myItems = new ArrayList<>();
+
 
     private FirebaseFirestore db;
-    //private ArrayList<Memory> myMemories;   // will refer to all Memory objects for authorized user
+    private ArrayList<Event> events;   // will refer to all the events created and stored in Firestore
 
 
     public FirebaseHelper() {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        //myMemories = new ArrayList<>(); // instantiate arraylist for app use
+        events = new ArrayList<>(); // instantiate arraylist for app use
 
     }
+
+
+    public FirebaseAuth getmAuth() {
+        return mAuth;
+    }
+
+
+    public void logOutUser() {
+        mAuth.signOut();
+        this.uid = null;
+    }
+
+
+    public void updateUid(String uid) {
+        this.uid = uid;
+    }
+
+
+    public void addEventToFirestore(Event event) {
+        // Create a new event with its name
+        Map<String, Object> newEvent = new HashMap<>();
+        newEvent.put("eventName", event.getName());
+        // Add a new document with a docID = to the authenticated user's UID
+        db.collection("events").document(event.getDocID())
+                .set(event)
+
+
+
+
+
+
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, eventName + " event added");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding event", e);
+                    }
+                });
+
+    }
+
 
 
 

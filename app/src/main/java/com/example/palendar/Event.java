@@ -11,7 +11,17 @@ public class Event implements Parcelable {
     private String time1;
     private String time2;
     private String date;
+    private String docID;
     private ArrayList<Time> times;
+
+    public Event(String name, String time1, String time2, String date, ArrayList<Time> times, String docID){
+        this.name = name;
+        this.time1 = time1;
+        this.time2 = time2;
+        this.times = times;
+        this.date = date;
+        this.docID = docID;
+    }
 
     public Event(String name, String time1, String time2, String date, ArrayList<Time> times){
         this.name = name;
@@ -19,6 +29,7 @@ public class Event implements Parcelable {
         this.time2 = time2;
         this.times = times;
         this.date = date;
+        this.docID = "No docID yet";
     }
 
     protected Event(Parcel in) {
@@ -27,6 +38,7 @@ public class Event implements Parcelable {
         time2 = in.readString();
         date = in.readString();
         times = in.createTypedArrayList(Time.CREATOR);
+        docID = in.readString();
     }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
@@ -40,6 +52,14 @@ public class Event implements Parcelable {
             return new Event[size];
         }
     };
+
+    public String getDocID() {
+        return docID;
+    }
+
+    public void setDocID(String docID) {
+        this.docID = docID;
+    }
 
     public String getName() {
         return name;

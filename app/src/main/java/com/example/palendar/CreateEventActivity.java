@@ -23,6 +23,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public static final String ARRAYLIST_VALUES = "Data to display in gridView";
     private static final String TAG = "ARIAGNO";
+    public static FirebaseHelper firebaseHelper;
 
     EditText eventNameET;
     Spinner spinner1;
@@ -36,6 +37,8 @@ public class CreateEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
+
+        firebaseHelper = new FirebaseHelper();
 
         eventNameET = findViewById(R.id.eventNameET);
         spinner1 = findViewById(R.id.time1Spinner);
@@ -109,8 +112,12 @@ public class CreateEventActivity extends AppCompatActivity {
             timeList.add(new Time(timesToDisplay.get(i)));
         }
 
+
         Event event = new Event(eventName, time1, time2, date, timeList);
         Log.d(TAG, "Event Created" + date);
+
+
+        firebaseHelper.addEventToFirestore(event);
 
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);

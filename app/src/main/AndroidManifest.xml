@@ -22,13 +22,13 @@
             android:name=".GroupScheduleActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateEventActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".CreateEventActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

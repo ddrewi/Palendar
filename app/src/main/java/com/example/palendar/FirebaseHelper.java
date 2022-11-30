@@ -54,7 +54,6 @@ public class FirebaseHelper {
 
 
     public FirebaseHelper() {
-        mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         events = new ArrayList<>(); // instantiate arraylist for app use
 
@@ -78,32 +77,26 @@ public class FirebaseHelper {
 
 
     public void addEventToFirestore(Event event) {
-        // Create a new event with its name
-        Map<String, Object> newEvent = new HashMap<>();
-        newEvent.put("eventName", event.getName());
-        // Add a new document with a docID = to the authenticated user's UID
-        db.collection("events").document(event.getDocID())
-                .set(event)
-
-
-
-
-
-
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Log.d(TAG, eventName + " event added");
+        db.collection("events").add(event)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.i("Andrew", "added successfully");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding event", e);
+                        Log.i("Ishaan", "Error adding document", e);
                     }
                 });
 
     }
+
+
+
+
+
+
 
 
 

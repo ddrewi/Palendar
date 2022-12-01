@@ -49,12 +49,13 @@ public class CreateEventActivity extends AppCompatActivity {
 
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
+        spinner1.setSelection(11);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 //String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                String selectedDate = "" + dayOfMonth + "/" + month + "/" + year;
+                String selectedDate = "" + (month + 1) + "/" + dayOfMonth + "/" + year;
                 Log.d(TAG, "New date Selected: " + selectedDate);
                 date = selectedDate;
             }
@@ -100,9 +101,9 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     public void createEvent(View view){
-        String eventName = eventNameET.toString();
-        String time1 = spinner1.toString();
-        String time2 = spinner2.toString();
+        String eventName = eventNameET.getText().toString();
+        String time1 = spinner1.getSelectedItem().toString();
+        String time2 = spinner2.getSelectedItem().toString();
 
         ArrayList<String> timesToDisplay = getTimes();
 

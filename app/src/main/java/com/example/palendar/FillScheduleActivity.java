@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class FillScheduleActivity extends AppCompatActivity {
 
         public static final String EVENT_VALUE = "Event Data";
-
+        User user;
         Event myEvent;
 
         protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +49,7 @@ public class FillScheduleActivity extends AppCompatActivity {
 
             gridView.setAdapter(timeArrayAdapter);
 
+
         }
 
         public void setTimes(View view){
@@ -59,6 +60,8 @@ public class FillScheduleActivity extends AppCompatActivity {
                 myEvent.getTimes().get(i).setChecked(toggleButton.isChecked());
             }
                */
+
+            user = new User(myEvent.getTimes(), user.getUserID())
 
             Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);

@@ -81,6 +81,7 @@ public class FirebaseHelper {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.i("Andrew", "added successfully");
+                        db.collection("events").document(documentReference.getId()).update("docID", documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -91,6 +92,8 @@ public class FirebaseHelper {
                 });
 
     }
+
+
 
 
 

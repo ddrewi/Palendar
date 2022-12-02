@@ -11,24 +11,37 @@ public class Event implements Parcelable {
     private String time1;
     private String time2;
     private String date;
-    private String docID;
+    private ArrayList<User> users;
     private ArrayList<Time> times;
+    private String docID;
 
-    public Event(String name, String time1, String time2, String date, ArrayList<Time> times, String docID){
+    public Event(String name, String time1, String time2, String date, ArrayList<User> users, ArrayList<Time> times, String docID){
         this.name = name;
         this.time1 = time1;
         this.time2 = time2;
-        this.times = times;
         this.date = date;
+        this.users = users;
+        this.times = times;
         this.docID = docID;
+    }
+
+    public Event(String name, String time1, String time2, String date, ArrayList<User> users, ArrayList<Time> times){
+        this.name = name;
+        this.time1 = time1;
+        this.time2 = time2;
+        this.date = date;
+        this.users = users;
+        this.times = times;
+        this.docID = "No docID yet";
     }
 
     public Event(String name, String time1, String time2, String date, ArrayList<Time> times){
         this.name = name;
         this.time1 = time1;
         this.time2 = time2;
-        this.times = times;
         this.date = date;
+        this.users = new ArrayList<User>();
+        this.times = times;
         this.docID = "No docID yet";
     }
 

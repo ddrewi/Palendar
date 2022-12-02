@@ -55,13 +55,20 @@ public class FillScheduleActivity extends AppCompatActivity {
         public void setTimes(View view){
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
 
-            /*for(int i = 0; i < gridView.getChildCount(); i++){
+            for(int i = 0; i < gridView.getChildCount(); i++){
+                View view = gridView.getChildAt();
+                ToggleButton toggleButton = view.
+
                 ToggleButton toggleButton = (ToggleButton) gridView.getChildAt(i);
+
+                Log.d("TESTER", toString().valueOf(toggleButton.isChecked()));
+
+
                 myEvent.getTimes().get(i).setChecked(toggleButton.isChecked());
             }
-               */
 
-            user = new User(myEvent.getTimes(), user.getUserID())
+
+            user = new User(myEvent.getTimes(), user.getUserID());
 
             Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);

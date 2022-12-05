@@ -66,6 +66,7 @@
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:text="Join"
+        android:onClick="joinEvent"
         android:textColor="@color/primaryTextColor"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginBetweenSmall" />

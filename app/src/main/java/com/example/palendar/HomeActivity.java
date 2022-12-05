@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -27,12 +28,15 @@ public class HomeActivity extends AppCompatActivity {
 
     TextView name, mail;
     Button logout;
+    EditText joinCodeEditText;
+    public static FirebaseHelper firebaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        joinCodeEditText = findViewById(R.id.joinCodeEditText);
         logout = findViewById(R.id.logout);
         //name = findViewById(R.id.name);
         //mail = findViewById(R.id.mail);
@@ -48,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(),SignInActivity   .class);
+                Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
                 startActivity(intent);
             }
         });
@@ -58,6 +62,12 @@ public class HomeActivity extends AppCompatActivity {
     public void createEvent (View view) {
         Intent intent = new Intent(HomeActivity.this, CreateEventActivity.class);
         startActivity(intent);
+    }
+
+
+    public void joinEvent(){
+        String eventName = joinCodeEditText.getText().toString();
+        firebaseHelper.addUserToEvent(eventName);
     }
 
 

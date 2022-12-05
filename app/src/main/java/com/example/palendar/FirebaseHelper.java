@@ -77,6 +77,7 @@ public class FirebaseHelper {
 
 
     public void addEventToFirestore(Event event) {
+        Log.d("Andrew", "fxn called");
         db.collection("events").add(event)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     public void onSuccess(DocumentReference documentReference) {
@@ -94,13 +95,25 @@ public class FirebaseHelper {
     }
 
 
+    public void addUserToEvent(String code){
+        /* For every event document in the events collection,
+            if the code matches the document's docID,
+            then add the user to the user array list.
+            Need to add checks for events that the user
+            is already a part of (duplicate users)
+            if successful, switch screen to fill screen
+
+            OR
+
+            try retrieving data
+            if fails, then return toast?
+         */
 
 
+        //users collection needs to be created
+        // user -> this user?
 
-
-
-
-
+    }
 
 
 

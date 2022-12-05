@@ -115,6 +115,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         Event event = new Event(eventName, time1, time2, date, timeList);
+
         Log.d(TAG, "Event Created" + date);
 
 
@@ -122,7 +123,14 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
-        //intent.putParcelableArrayListExtra(ARRAYLIST_VALUES, timeList);
+
+        /*
+        ERROR HERE
+       
+         */
+
+
+        intent.putParcelableArrayListExtra(EVENT_VALUE, timeList);
         intent.putExtra(EVENT_VALUE, event);
         startActivity(intent);
     }

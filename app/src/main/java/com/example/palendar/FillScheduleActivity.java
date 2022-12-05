@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class FillScheduleActivity extends AppCompatActivity {
 
         public static final String EVENT_VALUE = "Event Data";
+        public static FirebaseHelper firebaseHelper;
         User user;
         Event myEvent;
 
@@ -31,7 +32,7 @@ public class FillScheduleActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_fill_schedule);
             Intent intent = getIntent();
-
+            firebaseHelper = new FirebaseHelper();
             //ArrayList<Time> dataToDisplay = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
             myEvent = intent.getParcelableExtra(CreateEventActivity.EVENT_VALUE);
 //            ArrayList<Time> timeList = new ArrayList<>();
@@ -69,9 +70,12 @@ public class FillScheduleActivity extends AppCompatActivity {
                 myEvent.getTimes().get(i).setChecked(toggleButton.isChecked());
             }
 
-            CreateEventActivity.firebaseHelper.editEvent(myEvent);
+            User newUser = new User(myEvent.getTimes(), firebaseHelper.getmAuth().getUid());
+            ArrayList<User> currentUsers = myEvent.getUsers();
+            currentUsers.add(newUser);
+            myEvent.setUsers(currentUsers);
 
-           // user = new User(myEvent.getTimes(), user.getUserID());
+            firebaseHelper.editEvent(myEvent);
 
             Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);

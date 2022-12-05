@@ -25,15 +25,15 @@ public class Event implements Parcelable {
         this.docID = docID;
     }
 
-    public Event(String name, String time1, String time2, String date, ArrayList<User> users, ArrayList<Time> times){
-        this.name = name;
-        this.time1 = time1;
-        this.time2 = time2;
-        this.date = date;
-        this.users = users;
-        this.times = times;
-        this.docID = "No docID yet";
-    }
+//    public Event(String name, String time1, String time2, String date, ArrayList<User> users){
+//        this.name = name;
+//        this.time1 = time1;
+//        this.time2 = time2;
+//        this.date = date;
+//        this.users = users;
+//        this.times = times;
+//        this.docID = "No docID yet";
+//    }
 
     public Event(String name, String time1, String time2, String date, ArrayList<Time> times){
         this.name = name;
@@ -114,6 +114,14 @@ public class Event implements Parcelable {
         this.date = date;
     }
 
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -125,6 +133,7 @@ public class Event implements Parcelable {
         dest.writeString(time1);
         dest.writeString(time2);
         dest.writeString(date);
+        dest.writeTypedList(users);
         dest.writeTypedList(times);
     }
 }

@@ -95,8 +95,8 @@ public class FirebaseHelper {
     }
 
     public void editEvent(Event event){
-        Log.i()
-        db.collection("events").document(event.getDocID()).set(event);
+        String docId = event.getDocID();
+        db.collection("events").document(docId).set(event);
     }
 
 

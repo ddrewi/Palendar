@@ -33,7 +33,7 @@ public class FillScheduleActivity extends AppCompatActivity {
             Intent intent = getIntent();
 
             //ArrayList<Time> dataToDisplay = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
-            myEvent = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
+            myEvent = intent.getParcelableExtra(CreateEventActivity.EVENT_VALUE);
 //            ArrayList<Time> timeList = new ArrayList<>();
 //
 //            for(int i = 0; i < dataToDisplay.size(); i++){
@@ -60,10 +60,7 @@ public class FillScheduleActivity extends AppCompatActivity {
             }
             Log.d("Setting", "" + testInt);
 
-            /*for(int i = 0; i < gridView.getChildCount(); i++){
-                View view = gridView.getChildAt();
-                ToggleButton toggleButton = view.
-
+            for(int i = 0; i < gridView.getChildCount(); i++){
                 ToggleButton toggleButton = (ToggleButton) gridView.getChildAt(i);
 
                 Log.d("TESTER", toString().valueOf(toggleButton.isChecked()));
@@ -71,7 +68,8 @@ public class FillScheduleActivity extends AppCompatActivity {
 
                 myEvent.getTimes().get(i).setChecked(toggleButton.isChecked());
             }
-    */
+
+            CreateEventActivity.firebaseHelper.editEvent(myEvent);
 
            // user = new User(myEvent.getTimes(), user.getUserID());
 

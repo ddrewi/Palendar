@@ -21,7 +21,7 @@ import java.util.Locale;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-    public static final String ARRAYLIST_VALUES = "Data to display in gridView";
+    public static final String EVENT_VALUE = "Data to display in gridView";
     private static final String TAG = "ARIAGNO";
     public static FirebaseHelper firebaseHelper;
 
@@ -123,7 +123,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
         //intent.putParcelableArrayListExtra(ARRAYLIST_VALUES, timeList);
-        intent.putExtra(ARRAYLIST_VALUES, event);
+        intent.putExtra(EVENT_VALUE, event);
         startActivity(intent);
     }
 

@@ -94,6 +94,11 @@ public class FirebaseHelper {
 
     }
 
+    public void editEvent(Event event){
+        Log.i()
+        db.collection("events").document(event.getDocID()).set(event);
+    }
+
 
     public void addUserToEvent(String code){
         /* For every event document in the events collection,

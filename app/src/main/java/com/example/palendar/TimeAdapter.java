@@ -38,6 +38,6 @@ public class TimeAdapter extends ArrayAdapter<Time> {
         timeToggleButton.setTextOn(myTime.getTime());
 
         // Return the completed view to render on screen
-        return convertView;
+        return timeToggleButton;
     }
 }

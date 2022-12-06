@@ -54,9 +54,9 @@ public class FirebaseHelper {
 
 
     public FirebaseHelper() {
+        mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         events = new ArrayList<>(); // instantiate arraylist for app use
-
     }
 
 

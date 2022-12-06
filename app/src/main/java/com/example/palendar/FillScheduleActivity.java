@@ -55,6 +55,7 @@ public class FillScheduleActivity extends AppCompatActivity {
 
         public void setTimes(View view){
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
+            boolean[] preferredTimes = new boolean[gridView.getChildCount()];
 
             /*
             int testInt = 0;
@@ -69,11 +70,20 @@ public class FillScheduleActivity extends AppCompatActivity {
                 if (toggleButton.isChecked()){
                     int counter = myEvent.getTimes().get(i).getCounter();
                     myEvent.getTimes().get(i).setCounter(counter + 1);
+                    preferredTimes[i] = true;
                 }
-                Log.d("morning", "" + myEvent.getTimes().get(i).getTime() + myEvent.getTimes().get(i).getCounter());
+                else {
+                    preferredTimes[i] = false;
+                }
+                //Log.d("morning", "" + myEvent.getTimes().get(i).getTime() + myEvent.getTimes().get(i).getCounter());
+                Log.d("morning", myEvent.getTimes().get(i).getTime() + preferredTimes[i]);
             }
 
             // At this point, the event should be populated locally.
+
+            user = new User(firebaseHelper.getmAuth().getUid(), preferredTimes);
+            Log.d("afternoon", "" + user.getUserID());
+
 
 
 

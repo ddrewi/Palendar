@@ -51,7 +51,7 @@ public class User implements Parcelable {
         this.preferredTimes = preferredTimes;
     }
 
-    
+
     @Override
     public int describeContents() {
         return 0;

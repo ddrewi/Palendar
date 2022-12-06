@@ -25,10 +25,10 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".CreateEventActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateEventActivity"
+            android:name=".SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,7 +2,6 @@
     <string name="app_name">Palendar</string>
 
 
-
     <string-array name="times">
         <item>1:00</item>
         <item>2:00</item>

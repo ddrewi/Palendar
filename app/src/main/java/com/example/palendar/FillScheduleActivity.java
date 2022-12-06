@@ -95,7 +95,7 @@ public class FillScheduleActivity extends AppCompatActivity {
             firebaseHelper.editEvent(myEvent);
 
 
-            Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);
+            Intent intent = new Intent(FillScheduleActivity.this, ViewEventActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);
             startActivity(intent);
 

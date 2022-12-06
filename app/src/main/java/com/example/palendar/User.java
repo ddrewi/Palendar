@@ -4,24 +4,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.function.BooleanSupplier;
 
 public class User implements Parcelable {
-    private ArrayList<Time> preferredTimes;
     private String userID;
+    private boolean[] preferredTimes;
 
 
-
-    public User(ArrayList<Time> preferredTimes, String userID) {
-        this.preferredTimes = preferredTimes;
+    public User(String userID, boolean[] preferredTimes){
         this.userID = userID;
+        this.preferredTimes = preferredTimes;
     }
 
 
     protected User(Parcel in) {
-        preferredTimes = in.createTypedArrayList(Time.CREATOR);
         userID = in.readString();
+        preferredTimes = in.createBooleanArray();
     }
-
 
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
@@ -35,13 +34,6 @@ public class User implements Parcelable {
         }
     };
 
-    public ArrayList<Time> getPreferredTimes() {
-        return preferredTimes;
-    }
-
-    public void setPreferredTimes(ArrayList<Time> preferredTimes) {
-        this.preferredTimes = preferredTimes;
-    }
 
     public String getUserID() {
         return userID;
@@ -51,6 +43,15 @@ public class User implements Parcelable {
         this.userID = userID;
     }
 
+    public boolean[] getPreferredTimes() {
+        return preferredTimes;
+    }
+
+    public void setPreferredTimes(boolean[] preferredTimes) {
+        this.preferredTimes = preferredTimes;
+    }
+
+    
     @Override
     public int describeContents() {
         return 0;
@@ -58,8 +59,8 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(preferredTimes);
         dest.writeString(userID);
+        dest.writeBooleanArray(preferredTimes);
     }
 
 }

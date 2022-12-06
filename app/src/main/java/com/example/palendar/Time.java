@@ -5,24 +5,17 @@ import android.os.Parcelable;
 
 public class Time implements Parcelable {
     private String time;
-    private boolean isChecked;
+    private int counter;
+
 
     public Time(String time) {
         this.time = time;
+        this.counter = 0;
     }
 
     protected Time(Parcel in) {
         time = in.readString();
-        isChecked = false;
-    }
-
-
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
+        counter = in.readInt()
     }
 
     public static final Creator<Time> CREATOR = new Creator<Time>() {
@@ -38,6 +31,13 @@ public class Time implements Parcelable {
     };
 
 
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
 
     public String getTime() {
         return time;
@@ -47,6 +47,7 @@ public class Time implements Parcelable {
         this.time = time;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -55,5 +56,6 @@ public class Time implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(time);
+        dest.writeInt(counter);
     }
 }

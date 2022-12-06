@@ -70,12 +70,6 @@ public class FillScheduleActivity extends AppCompatActivity {
                 myEvent.getTimes().get(i).setChecked(toggleButton.isChecked());
             }
 
-            User newUser = new User(myEvent.getTimes(), firebaseHelper.getmAuth().getUid());
-            ArrayList<User> currentUsers = myEvent.getUsers();
-            currentUsers.add(newUser);
-            myEvent.setUsers(currentUsers);
-
-            firebaseHelper.editEvent(myEvent);
 
             Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);

@@ -94,31 +94,7 @@ public class FirebaseHelper {
 
     }
 
-    public void editEvent(Event event){
-        String docId = event.getDocID();
-        db.collection("events").document(docId).set(event);
-    }
 
-
-    public void addUserToEvent(String code){
-        /* For every event document in the events collection,
-            if the code matches the document's docID,
-            then add the user to the user array list.
-            Need to add checks for events that the user
-            is already a part of (duplicate users)
-            if successful, switch screen to fill screen
-
-            OR
-
-            try retrieving data
-            if fails, then return toast?
-         */
-
-
-        //users collection needs to be created
-        // user -> this user?
-
-    }
 
 
 

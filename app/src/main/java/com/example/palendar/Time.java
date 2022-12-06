@@ -15,7 +15,7 @@ public class Time implements Parcelable {
 
     protected Time(Parcel in) {
         time = in.readString();
-        counter = in.readInt()
+        counter = in.readInt();
     }
 
     public static final Creator<Time> CREATOR = new Creator<Time>() {

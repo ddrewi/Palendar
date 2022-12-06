@@ -25,15 +25,15 @@ public class Event implements Parcelable {
         this.docID = docID;
     }
 
-//    public Event(String name, String time1, String time2, String date, ArrayList<User> users){
-//        this.name = name;
-//        this.time1 = time1;
-//        this.time2 = time2;
-//        this.date = date;
-//        this.users = users;
-//        this.times = times;
-//        this.docID = "No docID yet";
-//    }
+    public Event(String name, String time1, String time2, String date, ArrayList<User> users, ArrayList<Time> times){
+        this.name = name;
+        this.time1 = time1;
+        this.time2 = time2;
+        this.date = date;
+        this.users = users;
+        this.times = times;
+        this.docID = "No docID yet";
+    }
 
     public Event(String name, String time1, String time2, String date, ArrayList<Time> times){
         this.name = name;
@@ -50,6 +50,7 @@ public class Event implements Parcelable {
         time1 = in.readString();
         time2 = in.readString();
         date = in.readString();
+        users = in.createTypedArrayList(User.CREATOR);
         times = in.createTypedArrayList(Time.CREATOR);
         docID = in.readString();
     }
@@ -66,13 +67,6 @@ public class Event implements Parcelable {
         }
     };
 
-    public String getDocID() {
-        return docID;
-    }
-
-    public void setDocID(String docID) {
-        this.docID = docID;
-    }
 
     public String getName() {
         return name;
@@ -98,14 +92,6 @@ public class Event implements Parcelable {
         this.time2 = time2;
     }
 
-    public ArrayList<Time> getTimes() {
-        return times;
-    }
-
-    public void setTimes(ArrayList<Time> times) {
-        this.times = times;
-    }
-
     public String getDate() {
         return date;
     }
@@ -122,6 +108,23 @@ public class Event implements Parcelable {
         this.users = users;
     }
 
+    public ArrayList<Time> getTimes() {
+        return times;
+    }
+
+    public void setTimes(ArrayList<Time> times) {
+        this.times = times;
+    }
+
+    public String getDocID() {
+        return docID;
+    }
+
+    public void setDocID(String docID) {
+        this.docID = docID;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -135,5 +138,7 @@ public class Event implements Parcelable {
         dest.writeString(date);
         dest.writeTypedList(users);
         dest.writeTypedList(times);
+        dest.writeString(docID);
     }
+
 }

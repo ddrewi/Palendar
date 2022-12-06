@@ -84,7 +84,15 @@ public class FillScheduleActivity extends AppCompatActivity {
             user = new User(firebaseHelper.getmAuth().getUid(), preferredTimes);
             Log.d("afternoon", "" + user.getUserID());
 
+            ArrayList<User> users = myEvent.getUsers();
+            users.add(user);
+            myEvent.setUsers(users);
 
+
+            myEvent.setDocID(myEvent.getDocID());
+
+
+            firebaseHelper.editEvent(myEvent);
 
 
             Intent intent = new Intent(FillScheduleActivity.this, HomeActivity.class);

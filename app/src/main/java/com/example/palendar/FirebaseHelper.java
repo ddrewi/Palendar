@@ -44,7 +44,7 @@ import java.util.concurrent.Executor;
  * in many places.  This is MUCH more efficient and less error prone.
  */
 public class FirebaseHelper {
-    public final String TAG = "Firebase";
+    public final String TAG = "Apple";
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
 
@@ -77,18 +77,18 @@ public class FirebaseHelper {
 
 
     public void addEventToFirestore(Event event) {
-        Log.d("Andrew", "fxn called");
+        Log.d(TAG, "function called");
         db.collection("events").add(event)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.i("Andrew", "added successfully");
+                        Log.i(TAG, "added successfully");
                         db.collection("events").document(documentReference.getId()).update("docID", documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.i("Ishaan", "Error adding document", e);
+                        Log.i(TAG, "Error adding document", e);
                     }
                 });
 
@@ -96,7 +96,34 @@ public class FirebaseHelper {
 
 
 
+    public void editEvent(Event event){
+        String docID = event.getDocID();
 
+        //This Doc ID does not work!!!!!
+
+
+
+        Log.d(TAG, "" + docID);
+        db.collection("events").document(docID).set(event)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.i(TAG, "Success updating event");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i(TAG, "Error updating event", e);
+                    }
+                });
+    }
+
+
+    //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
+    public interface FirestoreCallback {
+        void onCallback(ArrayList<Event> events);
+    }
 
 
 }

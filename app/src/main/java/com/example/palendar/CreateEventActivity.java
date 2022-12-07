@@ -120,6 +120,9 @@ public class CreateEventActivity extends AppCompatActivity {
 
         firebaseHelper.addEventToFirestore(event);
 
+        // At this point, we need to set the docID of the local event
+        // We can do this by modifying the addEventToFirestore method
+
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
         //intent.putParcelableArrayListExtra(EVENT_VALUE, timeList);

@@ -47,6 +47,10 @@ public class FirebaseHelper {
     public final String TAG = "Apple";
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
+    private Event currentEvent;
+
+    //private String docIDnewevent = null;
+    //public static Event currentEventEditing = null;
 
 
     private FirebaseFirestore db;
@@ -76,13 +80,32 @@ public class FirebaseHelper {
     }
 
 
-    public void addEventToFirestore(Event event) {
+
+    public void addEventToFirestore(Event event){
+        // add Event event to the database
+        // this method is overloaded and incorporates the interface to handle the asynch calls
+        addEventToFirestore(event, new FirestoreCallback() {
+            @Override
+            public void onCallback(Event event) {
+                Log.i(TAG, "Inside editData, onCallback " + event.getDocID());
+            }
+        });
+
+
+    }
+
+
+
+
+
+    private void addEventToFirestore(Event event, FirestoreCallback firestoreCallback) {
         Log.d(TAG, "function called");
         db.collection("events").add(event)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.i(TAG, "added successfully");
                         db.collection("events").document(documentReference.getId()).update("docID", documentReference.getId());
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -122,7 +145,7 @@ public class FirebaseHelper {
 
     //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
     public interface FirestoreCallback {
-        void onCallback(ArrayList<Event> events);
+        void onCallback(Event currentEvent);
     }
 
 

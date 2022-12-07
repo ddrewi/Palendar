@@ -2,6 +2,9 @@
 <resources>
     <dimen name="fontSizeLarge">40sp</dimen>
     <dimen name="fontSizeMedium">22sp</dimen>
+    <dimen name="fontSizeSmall">16sp</dimen>
+
+    <dimen name="textPadding">6dp</dimen>
 
     <dimen name="marginTop">40dp</dimen>
     <dimen name="marginBetween">30dp</dimen>
@@ -15,5 +18,8 @@
     <dimen name="editTextHeight">50dp</dimen>
 
     <dimen name="imageDimens">250dp</dimen>
+
+    <dimen name="spinnerWidth">300dp</dimen>
+    <dimen name="spinnerHeight">36dp</dimen>
 
 </resources>

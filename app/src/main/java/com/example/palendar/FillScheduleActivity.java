@@ -35,6 +35,7 @@ public class FillScheduleActivity extends AppCompatActivity {
             firebaseHelper = new FirebaseHelper();
             //ArrayList<Time> dataToDisplay = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
             myEvent = intent.getParcelableExtra(CreateEventActivity.EVENT_VALUE);
+            myEvent.setDocID(CreateEventActivity.firebaseHelper.getDocID());
 //            ArrayList<Time> timeList = new ArrayList<>();
 //
 //            for(int i = 0; i < dataToDisplay.size(); i++){

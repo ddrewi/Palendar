@@ -1,10 +1,12 @@
 package com.example.palendar;
 
+import static androidx.core.content.ContextCompat.createDeviceProtectedStorageContext;
 import static androidx.core.content.ContextCompat.startActivity;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.security.ConfirmationCallback;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -27,6 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.lang.invoke.ConstantCallSite;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,6 +51,7 @@ public class FirebaseHelper {
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
     private Event currentEvent;
+    private String docID = null;
 
     //private String docIDnewevent = null;
     //public static Event currentEventEditing = null;
@@ -90,12 +94,7 @@ public class FirebaseHelper {
                 Log.i(TAG, "Inside editData, onCallback " + event.getDocID());
             }
         });
-
-
     }
-
-
-
 
 
     private void addEventToFirestore(Event event, FirestoreCallback firestoreCallback) {
@@ -104,7 +103,15 @@ public class FirebaseHelper {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.i(TAG, "added successfully");
+                        docID = documentReference.getId();
                         db.collection("events").document(documentReference.getId()).update("docID", documentReference.getId());
+                        readData(new FirestoreCallback() {
+                            @Override
+                            public void onCallback(Event currentEvent) {
+                                Log.d(TAG, "done reading data " + currentEvent.getName() );
+                                docID = currentEvent.getDocID();
+                            }
+                        });
 
                     }
                 })
@@ -142,6 +149,57 @@ public class FirebaseHelper {
                 });
     }
 
+
+
+    public String getDocID() {
+        return docID;
+    }
+
+
+
+
+    private void readData(FirestoreCallback firestoreCallback) {
+        currentEvent = null;
+        db.collection("events").document(docID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            currentEvent = task.getResult().toObject(Event.class);
+                            Log.d(TAG, currentEvent.getName());
+                        } else {
+                            Log.d(TAG, "grabbing current event not successful");
+                        }
+                    }
+                });
+
+    }
+
+
+
+
+
+
+    /*
+
+      .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (DocumentSnapshot doc : task.getResult()) {
+                                Memory memory = doc.toObject(Memory.class);
+                                myMemories.add(memory);
+                            }
+
+                            Log.i(TAG, "Success reading data: " + myMemories.toString());
+                            firestoreCallback.onCallback(myMemories);
+                        } else {
+                            Log.d(TAG, "Error getting documents: " + task.getException());
+                        }
+                    }
+     */
 
     //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
     public interface FirestoreCallback {

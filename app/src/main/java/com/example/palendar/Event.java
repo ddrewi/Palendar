@@ -45,6 +45,8 @@ public class Event implements Parcelable {
         this.docID = "No docID yet";
     }
 
+    // NEED a default constructor with NO parameters
+
     protected Event(Parcel in) {
         name = in.readString();
         time1 = in.readString();
@@ -122,6 +124,16 @@ public class Event implements Parcelable {
 
     public void setDocID(String docID) {
         this.docID = docID;
+    }
+
+    public void clear(){
+        name = "";
+        time1 = "";
+        time2 = "";
+        date = "";
+        users.clear();
+        times.clear();
+        docID = "";
     }
 
 

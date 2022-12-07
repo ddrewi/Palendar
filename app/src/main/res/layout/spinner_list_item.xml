@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/priorityChosen"
+    android:layout_width="@dimen/spinnerWidth"
+    android:layout_height="@dimen/spinnerHeight"
+    android:gravity="center_vertical"
+    android:text="My Event"
+    android:fontFamily="@font/alef"
+    android:padding="@dimen/textPadding"
+    android:background="@color/secondaryLightColor"
+    android:textColor="@color/black"
+    android:textSize="@dimen/fontSizeSmall"
+
+    />

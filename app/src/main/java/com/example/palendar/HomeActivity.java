@@ -3,12 +3,17 @@ package com.example.palendar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -18,7 +23,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
+    private static final String EVENT_VALUE = "DATA TO DISPLAY ON NEXT PAGE";
 
     // Followed this tutorial for this activity
     // Does a great job explaining the code
@@ -30,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
     Button logout;
     EditText joinCodeEditText;
     public static FirebaseHelper firebaseHelper;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,27 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // NEED WAY TO ADD EVENTS FROM FIRESTORE HERE!!!!!!
+
+        ArrayList<Event> myEvents = new ArrayList<Event>();
+        ArrayList<String> myEventNames = new ArrayList<String>();
+        for(int i = 0; i < myEvents.size(); i++){
+            myEventNames.add(myEvents.get(i).getName());
+        }
+        spinner = findViewById(R.id.eventSpinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_list_item, myEventNames);
+        adapter.setDropDownViewResource(R.layout.spinner_list_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(HomeActivity.this, ViewEventActivity.class);
+                intent.putExtra(EVENT_VALUE, myEvents.get(position));
+                startActivity(intent);
+            }
+        });
+
 
     }
 

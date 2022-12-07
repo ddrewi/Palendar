@@ -19,19 +19,15 @@
 
     <!-- events should ideally be a spinner -->
 
-    <Button
-        android:id="@+id/eventButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Button" />
+    <Spinner
+        android:id="@+id/eventSpinner"
+        android:layout_width="@dimen/spinnerWidth"
+        android:layout_height="@dimen/spinnerHeight"
+        android:layout_marginTop="@dimen/marginBetween"
+        android:layout_gravity="center_horizontal"
+        />
 
-    <Button
-        android:id="@+id/eventButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Button" />
+
 
     <Button
         android:id="@+id/createEventButton"
@@ -79,6 +75,8 @@
         android:textColor="@color/primaryTextColor"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginBetweenSmall" />
+
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

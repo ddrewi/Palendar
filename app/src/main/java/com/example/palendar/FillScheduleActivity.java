@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class FillScheduleActivity extends AppCompatActivity {
 
         public static final String EVENT_VALUE = "Event Data";
-        public static FirebaseHelper firebaseHelper;
+        //public static FirebaseHelper firebaseHelper;
         User user;
         Event myEvent;
 
@@ -32,10 +32,10 @@ public class FillScheduleActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_fill_schedule);
             Intent intent = getIntent();
-            firebaseHelper = new FirebaseHelper();
+            //firebaseHelper = new FirebaseHelper();
             //ArrayList<Time> dataToDisplay = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
             myEvent = intent.getParcelableExtra(CreateEventActivity.EVENT_VALUE);
-            myEvent.setDocID(CreateEventActivity.firebaseHelper.getDocID());
+            //myEvent.setDocID(CreateEventActivity.firebaseHelper.getDocID());
 //            ArrayList<Time> timeList = new ArrayList<>();
 //
 //            for(int i = 0; i < dataToDisplay.size(); i++){
@@ -82,18 +82,16 @@ public class FillScheduleActivity extends AppCompatActivity {
 
             // At this point, the event should be populated locally.
 
-            user = new User(firebaseHelper.getmAuth().getUid(), preferredTimes);
+            user = new User(CreateEventActivity.firebaseHelper.getmAuth().getUid(), preferredTimes);
             Log.d("afternoon", "" + user.getUserID());
 
             ArrayList<User> users = myEvent.getUsers();
             users.add(user);
             myEvent.setUsers(users);
+            myEvent.setDocID(CreateEventActivity.firebaseHelper.getDocID());
+            Log.d("Apple", "before edit event " + myEvent.getDocID());
 
-
-            myEvent.setDocID(myEvent.getDocID());
-
-
-            firebaseHelper.editEvent(myEvent);
+            CreateEventActivity.firebaseHelper.editEvent(myEvent);
 
 
             Intent intent = new Intent(FillScheduleActivity.this, ViewEventActivity.class);

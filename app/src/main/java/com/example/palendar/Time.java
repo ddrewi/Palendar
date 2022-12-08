@@ -13,6 +13,11 @@ public class Time implements Parcelable {
         this.counter = 0;
     }
 
+    public Time() {
+        this.time = null;
+        this.counter = 0;
+    }
+
     protected Time(Parcel in) {
         time = in.readString();
         counter = in.readInt();

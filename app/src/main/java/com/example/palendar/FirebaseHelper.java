@@ -91,10 +91,11 @@ public class FirebaseHelper {
         addEventToFirestore(event, new FirestoreCallback() {
             @Override
             public void onCallback(Event event) {
-                Log.i(TAG, "Inside editData, onCallback " + event.getDocID());
+                Log.i(TAG, "Inside addEvent, onCallback " + event.getDocID());
             }
         });
     }
+
 
 
     private void addEventToFirestore(Event event, FirestoreCallback firestoreCallback) {
@@ -105,13 +106,14 @@ public class FirebaseHelper {
                         Log.i(TAG, "added successfully");
                         docID = documentReference.getId();
                         db.collection("events").document(documentReference.getId()).update("docID", documentReference.getId());
-                        readData(new FirestoreCallback() {
+                        readData(firestoreCallback);
+                        /*readData(new FirestoreCallback() {
                             @Override
-                            public void onCallback(Event currentEvent) {
-                                Log.d(TAG, "done reading data " + currentEvent.getName() );
+                            public void onCallback(Event event) {
+                                Log.d(TAG, "done reading data " + currentEvent.getDocID());
                                 docID = currentEvent.getDocID();
                             }
-                        });
+                        });*/
 
                     }
                 })
@@ -121,30 +123,27 @@ public class FirebaseHelper {
                         Log.i(TAG, "Error adding document", e);
                     }
                 });
-
     }
 
 
 
     public void editEvent(Event event){
         String docID = event.getDocID();
+        Log.d(TAG, "Inside editEvent " + docID);
 
-        //This Doc ID does not work!!!!!
-
-
-
-        Log.d(TAG, "" + docID);
-        db.collection("events").document(docID).set(event)
+        // Below isn't working
+        db.collection("events").document(docID)
+                .set(event)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Log.i(TAG, "Success updating event");
+                        Log.i(TAG, "Success updating document");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.i(TAG, "Error updating event", e);
+                        Log.i(TAG, "Error updating document", e);
                     }
                 });
     }
@@ -167,7 +166,9 @@ public class FirebaseHelper {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             currentEvent = task.getResult().toObject(Event.class);
-                            Log.d(TAG, currentEvent.getName());
+                            Log.d(TAG, "reached readData " + currentEvent.getName());
+                            docID = currentEvent.getDocID();
+                            Log.d(TAG, "reached readData " + docID);
                         } else {
                             Log.d(TAG, "grabbing current event not successful");
                         }
@@ -203,7 +204,7 @@ public class FirebaseHelper {
 
     //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
     public interface FirestoreCallback {
-        void onCallback(Event currentEvent);
+        void onCallback(Event event);
     }
 
 

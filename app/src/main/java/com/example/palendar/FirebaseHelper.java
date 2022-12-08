@@ -138,6 +138,7 @@ public class FirebaseHelper {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.i(TAG, "Success updating document");
+                        currentEvent = event;
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -177,7 +178,7 @@ public class FirebaseHelper {
 
     }
 
-
+//on data change listener
 
     public void getUsers(Event event){
 

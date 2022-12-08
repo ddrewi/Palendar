@@ -52,6 +52,7 @@ public class FirebaseHelper {
     private FirebaseAuth mAuth;
     private Event currentEvent;
     private String docID = null;
+    private int numUsers = 0;
 
     //private String docIDnewevent = null;
     //public static Event currentEventEditing = null;
@@ -131,7 +132,6 @@ public class FirebaseHelper {
         String docID = event.getDocID();
         Log.d(TAG, "Inside editEvent " + docID);
 
-        // Below isn't working
         db.collection("events").document(docID)
                 .set(event)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -179,10 +179,35 @@ public class FirebaseHelper {
 
 
 
+    public void getUsers(Event event){
+
+        db.collection("events").document(event.getDocID())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            currentEvent = task.getResult().toObject(Event.class);
+                            numUsers = currentEvent.getUsers().size();
+                            Log.d(TAG, "reached getUsers " + numUsers);
+                        } else {
+                            Log.d(TAG, "getUsers not successful");
+                        }
+                    };
+                });
+    }
 
 
 
-    /*
+    public int getNumUsers() {
+        return numUsers;
+    }
+
+    public void setNumUsers(int numUsers) {
+        this.numUsers = numUsers;
+    }
+
+/*
 
       .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
     @Override

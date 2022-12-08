@@ -2,6 +2,7 @@ package com.example.palendar;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.audiofx.BassBoost;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,12 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
         }
 
         TextView timeTV = (TextView) convertView.findViewById(R.id.itemGradientTextView);
-        //timeTV.setText(myTime.getTime());
+        timeTV.setText(myTime.getTime());
+
+
+  /*      HomeActivity.firebaseHelper*/
+
+
 
         // ********** NEEDS SOME WAY TO FIND TOTAL COUNT OF PEOPLE, 5 is a placeholder **********
 
@@ -54,17 +60,20 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
 //                        }
 //                    }
 //                });
-        int opacityValue = ((int) ((myTime.getCounter() + (int) (Math.random() * 5 + 1) /1.0/ 5) * 255));
+        int numUsers;
+        int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
+        Log.d("peanuts", "" + opacityValue);
 
 
         // Convert rgb ints to hex: https://stackoverflow.com/questions/3607858/convert-a-rgb-color-value-to-a-hexadecimal-string
 
 
-        String hex = String.format("#%02x%02x%02x%02x", opacityValue, 0, 255, 0);
+        // replace 50 with opacity value
+        String hex = String.format("#%02x%02x%02x%02x", 50, 0, 255, 0);
 
         Log.d("peanuts", "" + hex);
         timeTV.setBackgroundColor(Color.parseColor(hex));
-        timeTV.setText("" + opacityValue);
+        //timeTV.setText("" + opacityValue);
         return timeTV;
     }
 }

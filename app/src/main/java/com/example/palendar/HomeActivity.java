@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         // ***************** NEED WAY TO ADD EVENTS FROM FIRESTORE HERE ***************************
 
         userEvents = new ArrayList<>();
-        CollectionReference allEvents = firebaseHelper.getDb().collection("events");
+        /*CollectionReference allEvents = firebaseHelper.getDb().collection("events");
         firebaseHelper.getDb().collection("events")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -103,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
                         Log.d("peanuts", "" + userEvents.get(0).getName());
                     }
-                });
+                });*/
 
         ArrayList<String> userEventNames = new ArrayList<String>();
         for(int i = 0; i < userEvents.size(); i++){

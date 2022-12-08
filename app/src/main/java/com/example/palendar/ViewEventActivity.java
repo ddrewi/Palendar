@@ -20,7 +20,9 @@ public class ViewEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
         Intent intent = getIntent();
-        eventToDisplay = intent.getParcelableExtra(HomeActivity.EVENT_VALUE);
+        eventToDisplay = intent.getParcelableExtra(FillScheduleActivity.EVENT_VALUE);
+
+        HomeActivity.firebaseHelper.getUsers(eventToDisplay);
 
         GroupTimeAdapter groupTimeAdapter = new GroupTimeAdapter(this, eventToDisplay.getTimes());
 
@@ -28,6 +30,7 @@ public class ViewEventActivity extends AppCompatActivity {
 
         gridView.setAdapter(groupTimeAdapter);
     }
+    
 
     public void returnHome (View view) {
         Intent intent = new Intent(ViewEventActivity.this, HomeActivity.class);

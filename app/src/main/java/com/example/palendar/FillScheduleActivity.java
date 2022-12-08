@@ -56,7 +56,7 @@ public class FillScheduleActivity extends AppCompatActivity {
 
         public void setTimes(View view){
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
-            boolean[] preferredTimes = new boolean[gridView.getChildCount()];
+            ArrayList<Time> preferredTimes = new ArrayList<Time>();
 
             /*
             int testInt = 0;
@@ -71,13 +71,9 @@ public class FillScheduleActivity extends AppCompatActivity {
                 if (toggleButton.isChecked()){
                     int counter = myEvent.getTimes().get(i).getCounter();
                     myEvent.getTimes().get(i).setCounter(counter + 1);
-                    preferredTimes[i] = true;
-                }
-                else {
-                    preferredTimes[i] = false;
+                    preferredTimes.add(new Time(myEvent.getTimes().get(i).getTime()));
                 }
                 //Log.d("morning", "" + myEvent.getTimes().get(i).getTime() + myEvent.getTimes().get(i).getCounter());
-                Log.d("morning", myEvent.getTimes().get(i).getTime() + preferredTimes[i]);
             }
 
             // At this point, the event should be populated locally.

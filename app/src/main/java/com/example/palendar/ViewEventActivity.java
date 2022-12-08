@@ -22,11 +22,11 @@ public class ViewEventActivity extends AppCompatActivity {
         Intent intent = getIntent();
         eventToDisplay = intent.getParcelableExtra(HomeActivity.EVENT_VALUE);
 
-        GroupTimeAdapter groupTimeAdapter = new GroupTimeAdapter(this, eventToDisplay.getTimes());
+        //GroupTimeAdapter groupTimeAdapter = new GroupTimeAdapter(this, eventToDisplay.getTimes());
 
-        GridView gridView = findViewById(R.id.preferences);
+        //GridView gridView = findViewById(R.id.preferences);
 
-        gridView.setAdapter(groupTimeAdapter);
+        //gridView.setAdapter(groupTimeAdapter);
     }
 
     public void returnHome (View view) {

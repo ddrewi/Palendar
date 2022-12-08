@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-    private static final String EVENT_VALUE = "DATA TO DISPLAY ON NEXT PAGE";
+    public static final String EVENT_VALUE = "DATA TO DISPLAY ON NEXT PAGE";
 
     // Followed this tutorial for this activity
     // Does a great job explaining the code
@@ -39,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
     EditText joinCodeEditText;
     public static FirebaseHelper firebaseHelper;
     Spinner spinner;
+    Button viewEventButton;
+    Event selectedEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         //name = findViewById(R.id.name);
         //mail = findViewById(R.id.mail);
-
+        viewEventButton = findViewById(R.id.viewEventsButton);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null){
@@ -66,26 +68,48 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // NEED WAY TO ADD EVENTS FROM FIRESTORE HERE!!!!!!
+        // ***************** NEED WAY TO ADD EVENTS FROM FIRESTORE HERE ***************************
 
         ArrayList<Event> myEvents = new ArrayList<Event>();
         ArrayList<String> myEventNames = new ArrayList<String>();
         for(int i = 0; i < myEvents.size(); i++){
             myEventNames.add(myEvents.get(i).getName());
         }
+
+        //***** TEMPORARY **********************
+        for(int i = 0; i < 5; i++){
+            myEvents.add(new Event());
+            ArrayList<Time> tempTimes = new ArrayList<>();
+            for(int k = 0; k < 5; k++){
+                tempTimes.add(new Time("" + i));
+            }
+            myEvents.get(i).setTimes(tempTimes);
+            myEventNames.add("event " + i);
+        }
         spinner = findViewById(R.id.eventSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_list_item, myEventNames);
         adapter.setDropDownViewResource(R.layout.spinner_list_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(HomeActivity.this, ViewEventActivity.class);
-                intent.putExtra(EVENT_VALUE, myEvents.get(position));
-                startActivity(intent);
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedEvent = myEvents.get(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
+        viewEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, ViewEventActivity.class);
+                intent.putExtra(EVENT_VALUE, selectedEvent);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -99,6 +123,9 @@ public class HomeActivity extends AppCompatActivity {
         String eventName = joinCodeEditText.getText().toString();
         //firebaseHelper.addUserToEvent(eventName);
     }
+
+
+
 
 
 }

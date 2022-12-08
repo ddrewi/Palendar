@@ -47,6 +47,16 @@ public class Event implements Parcelable {
 
     // NEED a default constructor with NO parameters
 
+    public Event(){
+        this.name = "";
+        this.time1 = null;
+        this.time2 = null;
+        this.date = null;
+        this.users = new ArrayList<User>();
+        this.times = null;
+        this.docID = "No docID yet";
+    }
+
     protected Event(Parcel in) {
         name = in.readString();
         time1 = in.readString();
@@ -56,6 +66,8 @@ public class Event implements Parcelable {
         times = in.createTypedArrayList(Time.CREATOR);
         docID = in.readString();
     }
+
+
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
         @Override

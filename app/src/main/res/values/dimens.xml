@@ -19,7 +19,7 @@
 
     <dimen name="imageDimens">250dp</dimen>
 
-    <dimen name="spinnerWidth">300dp</dimen>
+    <dimen name="spinnerWidth">260dp</dimen>
     <dimen name="spinnerHeight">36dp</dimen>
 
 </resources>

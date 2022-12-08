@@ -9,9 +9,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class GroupTimeAdapter extends ArrayAdapter<Time> {
+
+    public static FirebaseHelper firebaseHelper;
 
     public GroupTimeAdapter(Context context, ArrayList<Time> timeList){
         super(context, 0, timeList);
@@ -28,6 +37,23 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
         //timeTV.setText(myTime.getTime());
 
         // ********** NEEDS SOME WAY TO FIND TOTAL COUNT OF PEOPLE, 5 is a placeholder **********
+
+//        firebaseHelper.getDb().collection("events")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot doc : task.getResult()) {
+//                                Log.d("peanuts", doc.getId() + " => " + doc.getData());
+//                                Event event = doc.toObject(Event.class);
+//                            }
+//
+//                        } else {
+//                            Log.d("peanuts", "Error getting documents: ", task.getException());
+//                        }
+//                    }
+//                });
         int opacityValue = ((int) ((myTime.getCounter() + (int) (Math.random() * 5 + 1) /1.0/ 5) * 255));
 
 

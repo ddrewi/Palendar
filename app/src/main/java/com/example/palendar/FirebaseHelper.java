@@ -207,5 +207,11 @@ public class FirebaseHelper {
         void onCallback(Event event);
     }
 
+    public FirebaseFirestore getDb() {
+        return db;
+    }
 
+    public void setDb(FirebaseFirestore db) {
+        this.db = db;
+    }
 }

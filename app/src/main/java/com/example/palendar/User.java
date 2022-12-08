@@ -16,6 +16,11 @@ public class User implements Parcelable {
         this.preferredTimes = preferredTimes;
     }
 
+    public User(){
+        this.userID = null;
+        this.preferredTimes = null;
+    }
+
 
     protected User(Parcel in) {
         userID = in.readString();

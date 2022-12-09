@@ -46,7 +46,47 @@ public class FillScheduleActivity extends AppCompatActivity {
 
         }
 
-        public void setTimes(View view){
+        public void updateAvailability(View view){
+            GridView gridView = (GridView) findViewById(R.id.timeOptions);
+            ArrayList<String> preferredTimes = new ArrayList<String>();
+
+            //When the button is toggled, add 1 to the counter for the corresponding time.
+            //Also add the name of the time to the user's String array.
+
+            for(int i = 0; i < gridView.getChildCount(); i++){
+                ToggleButton toggleButton = (ToggleButton) gridView.getChildAt(i);
+                if (toggleButton.isChecked()){
+                    int counter = myEvent.getTimes().get(i).getCounter();
+                    myEvent.getTimes().get(i).setCounter(counter + 1);
+                    String time = myEvent.getTimes().get(i).getTime();
+                    preferredTimes.add(time);
+                }
+            }
+
+            //At this point, the event is updated locally.
+
+            user = new User(HomeActivity.firebaseHelper.getmAuth().getUid(), preferredTimes);
+            Log.d(TAG, "" + user.getUserID());
+
+            ArrayList<User> users = myEvent.getUsers();
+            users.add(user);
+
+            myEvent.setUsers(users);
+            myEvent.setDocID(HomeActivity.firebaseHelper.getDocID());
+            HomeActivity.firebaseHelper.editEvent(myEvent);
+
+        }
+
+
+        public void switchScreens(View view){
+            Intent intent = new Intent(FillScheduleActivity.this, ViewEventActivity.class);
+            intent.putExtra(EVENT_VALUE, myEvent);
+            startActivity(intent);
+        }
+
+
+
+       /* public void setTimes(View view){
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
             ArrayList<String> preferredTimes = new ArrayList<String>();
 
@@ -82,6 +122,6 @@ public class FillScheduleActivity extends AppCompatActivity {
             Intent intent = new Intent(FillScheduleActivity.this, ViewEventActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);
             startActivity(intent);
-        }
+        }*/
         
 }

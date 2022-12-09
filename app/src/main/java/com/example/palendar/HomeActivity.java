@@ -147,7 +147,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void joinEvent(){
         String eventName = joinCodeEditText.getText().toString();
-
+        
 
 
 

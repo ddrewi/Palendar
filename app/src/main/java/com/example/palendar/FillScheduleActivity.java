@@ -78,7 +78,6 @@ public class FillScheduleActivity extends AppCompatActivity {
 
             HomeActivity.firebaseHelper.editEvent(myEvent);
             // At this point, asynch has not updated numUsers.
-            SystemClock.sleep(2000);
 
             Intent intent = new Intent(FillScheduleActivity.this, ViewEventActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);

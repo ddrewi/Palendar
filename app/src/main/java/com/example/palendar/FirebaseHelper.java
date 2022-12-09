@@ -124,7 +124,7 @@ public class FirebaseHelper {
     }
 
 
-    public void editEvent(Event event, FirestoreCallback firestoreCallback){
+    private void editEvent(Event event, FirestoreCallback firestoreCallback){
         String docID = event.getDocID();
         Log.d(TAG, "Inside editEvent " + docID);
 
@@ -145,14 +145,6 @@ public class FirebaseHelper {
                     }
                 });
     }
-
-
-
-    public String getDocID() {
-        return docID;
-    }
-
-
 
 
     private void readData(FirestoreCallback firestoreCallback) {
@@ -177,25 +169,24 @@ public class FirebaseHelper {
 
     }
 
-//on data change listener
 
-/*    public void getUsers(Event event){
-
-        db.collection("events").document(event.getDocID())
+/*    private void joinEvent(String code, FirestoreCallback firestoreCallback){
+        db.collection("events").document(code)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             currentEvent = task.getResult().toObject(Event.class);
-                            numUsers = currentEvent.getUsers().size();
-                            Log.d(TAG, "reached getUsers " + numUsers);
-                        } else {
-                            Log.d(TAG, "getUsers not successful");
+                            currentEvent.get
                         }
-                    };
-                });
+
+                    }
+                                       }
+
     }*/
+
+//on data change listener
 
 
     public int getNumUsers() {
@@ -204,6 +195,10 @@ public class FirebaseHelper {
 
     public void setNumUsers(int numUsers) {
         this.numUsers = numUsers;
+    }
+
+    public String getDocID() {
+        return docID;
     }
 
 

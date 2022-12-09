@@ -41,7 +41,7 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
 
         int numUsers = HomeActivity.firebaseHelper.getNumUsers();
 
-        Log.d(TAG, "" + numUsers);
+        Log.d("FBH", "numUsers = " + numUsers);
 
         //int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
         //Log.d(TAG, "" + opacityValue);

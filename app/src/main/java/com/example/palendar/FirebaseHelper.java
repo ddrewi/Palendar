@@ -47,16 +47,12 @@ import java.util.concurrent.Executor;
  * in many places.  This is MUCH more efficient and less error prone.
  */
 public class FirebaseHelper {
-    public final String TAG = "Apple";
+    public final String TAG = "FBH";
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
     private Event currentEvent;
     private String docID = null;
     private int numUsers = 0;
-
-    //private String docIDnewevent = null;
-    //public static Event currentEventEditing = null;
-
 
     private FirebaseFirestore db;
     private ArrayList<Event> events;   // will refer to all the events created and stored in Firestore
@@ -85,7 +81,6 @@ public class FirebaseHelper {
     }
 
 
-
     public void addEventToFirestore(Event event){
         // add Event event to the database
         // this method is overloaded and incorporates the interface to handle the asynch calls
@@ -98,9 +93,7 @@ public class FirebaseHelper {
     }
 
 
-
     private void addEventToFirestore(Event event, FirestoreCallback firestoreCallback) {
-        Log.d(TAG, "function called");
         db.collection("events").add(event)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     public void onSuccess(DocumentReference documentReference) {
@@ -108,14 +101,6 @@ public class FirebaseHelper {
                         docID = documentReference.getId();
                         db.collection("events").document(documentReference.getId()).update("docID", documentReference.getId());
                         readData(firestoreCallback);
-                        /*readData(new FirestoreCallback() {
-                            @Override
-                            public void onCallback(Event event) {
-                                Log.d(TAG, "done reading data " + currentEvent.getDocID());
-                                docID = currentEvent.getDocID();
-                            }
-                        });*/
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -127,8 +112,19 @@ public class FirebaseHelper {
     }
 
 
-
     public void editEvent(Event event){
+        // add Event event to the database
+        // this method is overloaded and incorporates the interface to handle the asynch calls
+        editEvent(event, new FirestoreCallback() {
+            @Override
+            public void onCallback(Event event) {
+                Log.i(TAG, "Inside editEvent, onCallback " + event.getDocID() + " " + numUsers);
+            }
+        });
+    }
+
+
+    public void editEvent(Event event, FirestoreCallback firestoreCallback){
         String docID = event.getDocID();
         Log.d(TAG, "Inside editEvent " + docID);
 
@@ -139,6 +135,7 @@ public class FirebaseHelper {
                     public void onSuccess(Void unused) {
                         Log.i(TAG, "Success updating document");
                         currentEvent = event;
+                        readData(firestoreCallback);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -167,9 +164,11 @@ public class FirebaseHelper {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             currentEvent = task.getResult().toObject(Event.class);
-                            Log.d(TAG, "reached readData " + currentEvent.getName());
                             docID = currentEvent.getDocID();
-                            Log.d(TAG, "reached readData " + docID);
+                            numUsers = currentEvent.getUsers().size();
+                            Log.d(TAG, "reached readData " + docID + " " + numUsers);
+                            //This line is necessary for onCallback
+                            firestoreCallback.onCallback(currentEvent);
                         } else {
                             Log.d(TAG, "grabbing current event not successful");
                         }
@@ -180,7 +179,7 @@ public class FirebaseHelper {
 
 //on data change listener
 
-    public void getUsers(Event event){
+/*    public void getUsers(Event event){
 
         db.collection("events").document(event.getDocID())
                 .get()
@@ -196,8 +195,7 @@ public class FirebaseHelper {
                         }
                     };
                 });
-    }
-
+    }*/
 
 
     public int getNumUsers() {
@@ -208,25 +206,6 @@ public class FirebaseHelper {
         this.numUsers = numUsers;
     }
 
-/*
-
-      .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-
-                            for (DocumentSnapshot doc : task.getResult()) {
-                                Memory memory = doc.toObject(Memory.class);
-                                myMemories.add(memory);
-                            }
-
-                            Log.i(TAG, "Success reading data: " + myMemories.toString());
-                            firestoreCallback.onCallback(myMemories);
-                        } else {
-                            Log.d(TAG, "Error getting documents: " + task.getException());
-                        }
-                    }
-     */
 
     //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
     public interface FirestoreCallback {

@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 
 public class GroupTimeAdapter extends ArrayAdapter<Time> {
 
-    public static FirebaseHelper firebaseHelper;
+    private static final String TAG = "Peanuts";
 
     public GroupTimeAdapter(Context context, ArrayList<Time> timeList){
         super(context, 0, timeList);
@@ -38,31 +39,12 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
         timeTV.setText(myTime.getTime());
 
 
-  /*      HomeActivity.firebaseHelper*/
+        int numUsers = HomeActivity.firebaseHelper.getNumUsers();
 
+        Log.d(TAG, "" + numUsers);
 
-
-        // ********** NEEDS SOME WAY TO FIND TOTAL COUNT OF PEOPLE, 5 is a placeholder **********
-
-//        firebaseHelper.getDb().collection("events")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot doc : task.getResult()) {
-//                                Log.d("peanuts", doc.getId() + " => " + doc.getData());
-//                                Event event = doc.toObject(Event.class);
-//                            }
-//
-//                        } else {
-//                            Log.d("peanuts", "Error getting documents: ", task.getException());
-//                        }
-//                    }
-//                });
-        int numUsers;
         //int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
-        //Log.d("peanuts", "" + opacityValue);
+        //Log.d(TAG, "" + opacityValue);
 
 
         // Convert rgb ints to hex: https://stackoverflow.com/questions/3607858/convert-a-rgb-color-value-to-a-hexadecimal-string

@@ -22,7 +22,7 @@ public class ViewEventActivity extends AppCompatActivity {
         Intent intent = getIntent();
         eventToDisplay = intent.getParcelableExtra(FillScheduleActivity.EVENT_VALUE);
 
-        HomeActivity.firebaseHelper.getUsers(eventToDisplay);
+        //HomeActivity.firebaseHelper.getUsers(eventToDisplay);
 
         GroupTimeAdapter groupTimeAdapter = new GroupTimeAdapter(this, eventToDisplay.getTimes());
 

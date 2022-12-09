@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.ToggleButton;
 import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class FillScheduleActivity extends AppCompatActivity {
 
@@ -75,6 +77,8 @@ public class FillScheduleActivity extends AppCompatActivity {
             Log.d(TAG, "Before editEvent, " + myEvent.getDocID());
 
             HomeActivity.firebaseHelper.editEvent(myEvent);
+            // At this point, asynch has not updated numUsers.
+            SystemClock.sleep(2000);
 
             Intent intent = new Intent(FillScheduleActivity.this, ViewEventActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);

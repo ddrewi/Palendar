@@ -23,80 +23,62 @@ import java.util.ArrayList;
 public class FillScheduleActivity extends AppCompatActivity {
 
         public static final String EVENT_VALUE = "Event Data";
-        //public static FirebaseHelper firebaseHelper;
+        private static final String TAG = "Banana";
         User user;
         Event myEvent;
 
-        protected void onCreate(Bundle savedInstanceState)
-        {
+
+        protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_fill_schedule);
             Intent intent = getIntent();
-            //firebaseHelper = new FirebaseHelper();
-            //ArrayList<Time> dataToDisplay = intent.getParcelableExtra(CreateEventActivity.ARRAYLIST_VALUES);
+
+            //Here, we store the created event locally.
             myEvent = intent.getParcelableExtra(CreateEventActivity.EVENT_VALUE);
-            //myEvent.setDocID(CreateEventActivity.firebaseHelper.getDocID());
-//            ArrayList<Time> timeList = new ArrayList<>();
-//
-//            for(int i = 0; i < dataToDisplay.size(); i++){
-//                timeList.add(new Time(dataToDisplay.get(i)));
-//            }
 
             TimeAdapter timeArrayAdapter = new TimeAdapter(this, myEvent.getTimes());
-
-//            ArrayAdapter<String> listAdapter = new ArrayAdapter<>(
-//                    this, android.R.layout.simple_list_item_1, dataToDisplay);
 
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
 
             gridView.setAdapter(timeArrayAdapter);
 
-
         }
 
         public void setTimes(View view){
             GridView gridView = (GridView) findViewById(R.id.timeOptions);
-            //ArrayList<Time> preferredTimes = new ArrayList<Time>();
+            ArrayList<String> preferredTimes = new ArrayList<String>();
 
-            /*
-            int testInt = 0;
-            for(int i = 0; i < gridView.getChildCount(); i++){
-                testInt++;
-            }
-            Log.d("Setting", "" + testInt);
-             */
+            //When the button is toggled, add 1 to the counter for the corresponding time.
+            //Also add the name of the time to the user's String array.
 
             for(int i = 0; i < gridView.getChildCount(); i++){
                 ToggleButton toggleButton = (ToggleButton) gridView.getChildAt(i);
                 if (toggleButton.isChecked()){
                     int counter = myEvent.getTimes().get(i).getCounter();
                     myEvent.getTimes().get(i).setCounter(counter + 1);
-                    //preferredTimes.add(new Time(myEvent.getTimes().get(i).getTime()));
+                    String time = myEvent.getTimes().get(i).getTime();
+                    preferredTimes.add(time);
                 }
-                //Log.d("morning", "" + myEvent.getTimes().get(i).getTime() + myEvent.getTimes().get(i).getCounter());
             }
 
-            // At this point, the event should be populated locally.
+            //At this point, the event is updated locally.
 
-            user = new User(CreateEventActivity.firebaseHelper.getmAuth().getUid());
-            Log.d("afternoon", "" + user.getUserID());
+            user = new User(HomeActivity.firebaseHelper.getmAuth().getUid(), preferredTimes);
+            Log.d(TAG, "" + user.getUserID());
 
             ArrayList<User> users = myEvent.getUsers();
             users.add(user);
+
             myEvent.setUsers(users);
-            myEvent.setDocID(CreateEventActivity.firebaseHelper.getDocID());
-            Log.d("Apple", "before edit event " + myEvent.getDocID());
+            myEvent.setDocID(HomeActivity.firebaseHelper.getDocID());
 
-            CreateEventActivity.firebaseHelper.editEvent(myEvent);
+            Log.d(TAG, "Before editEvent, " + myEvent.getDocID());
 
+            HomeActivity.firebaseHelper.editEvent(myEvent);
 
             Intent intent = new Intent(FillScheduleActivity.this, ViewEventActivity.class);
             intent.putExtra(EVENT_VALUE, myEvent);
             startActivity(intent);
-
         }
-
-
-
-
+        
 }

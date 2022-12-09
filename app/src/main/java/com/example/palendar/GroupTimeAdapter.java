@@ -61,8 +61,8 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
 //                    }
 //                });
         int numUsers;
-        int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
-        Log.d("peanuts", "" + opacityValue);
+        //int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
+        //Log.d("peanuts", "" + opacityValue);
 
 
         // Convert rgb ints to hex: https://stackoverflow.com/questions/3607858/convert-a-rgb-color-value-to-a-hexadecimal-string

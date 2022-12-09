@@ -8,22 +8,24 @@ import java.util.function.BooleanSupplier;
 
 public class User implements Parcelable {
     private String userID;
-    //private ArrayList<Time> preferredTimes;
+    private ArrayList<String> preferredTimes;
 
 
-    public User(String userID){
+    public User(String userID, ArrayList<String> preferredTimes){
         this.userID = userID;
-        //this.preferredTimes = preferredTimes;
+        this.preferredTimes = preferredTimes;
     }
 
     public User(){
         this.userID = null;
+        this.preferredTimes = null;
     }
-
 
     protected User(Parcel in) {
         userID = in.readString();
+        preferredTimes = in.createStringArrayList();
     }
+
 
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
@@ -46,6 +48,13 @@ public class User implements Parcelable {
         this.userID = userID;
     }
 
+    public ArrayList<String> getPreferredTimes() {
+        return preferredTimes;
+    }
+
+    public void setPreferredTimes(ArrayList<String> preferredTimes) {
+        this.preferredTimes = preferredTimes;
+    }
 
     @Override
     public int describeContents() {
@@ -55,6 +64,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(userID);
+        dest.writeStringList(preferredTimes);
     }
 
 }

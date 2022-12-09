@@ -41,11 +41,10 @@ public class HomeActivity extends AppCompatActivity {
     // https://www.youtube.com/watch?v=bBJF1M5h_UU
 
 
+    public static FirebaseHelper firebaseHelper;
 
-    TextView name, mail;
     Button logout;
     EditText joinCodeEditText;
-    public static FirebaseHelper firebaseHelper;
     Spinner spinner;
     Button viewEventButton;
     Event selectedEvent;
@@ -59,8 +58,6 @@ public class HomeActivity extends AppCompatActivity {
 
         joinCodeEditText = findViewById(R.id.joinCodeEditText);
         logout = findViewById(R.id.logout);
-        //name = findViewById(R.id.name);
-        //mail = findViewById(R.id.mail);
         viewEventButton = findViewById(R.id.viewEventsButton);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
@@ -77,6 +74,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         // ***************** NEED WAY TO ADD EVENTS FROM FIRESTORE HERE ***************************
 
@@ -138,19 +136,18 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
     public void createEvent (View view) {
         Intent intent = new Intent(HomeActivity.this, CreateEventActivity.class);
         startActivity(intent);
     }
 
-
     public void joinEvent(){
         String eventName = joinCodeEditText.getText().toString();
         //firebaseHelper.addUserToEvent(eventName);
     }
-
-
-
-
 
 }

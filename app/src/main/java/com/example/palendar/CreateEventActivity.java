@@ -22,14 +22,12 @@ import java.util.Locale;
 public class CreateEventActivity extends AppCompatActivity {
 
     public static final String EVENT_VALUE = "Data to display in gridView";
-    private static final String TAG = "ARIAGNO";
-    public static FirebaseHelper firebaseHelper;
+    private static final String TAG = "Apple";
 
     EditText eventNameET;
     Spinner spinner1;
     Spinner spinner2;
     CalendarView calendarView;
-    String todayDate;
     String date;
 
 
@@ -38,7 +36,6 @@ public class CreateEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
-        firebaseHelper = new FirebaseHelper();
 
         eventNameET = findViewById(R.id.eventNameET);
         spinner1 = findViewById(R.id.time1Spinner);
@@ -51,6 +48,8 @@ public class CreateEventActivity extends AppCompatActivity {
         spinner2.setAdapter(adapter);
         spinner1.setSelection(11);
 
+        //We are having issues getting the current date.
+        //The user needs to select a date on the CalendarView for the date to update.
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -60,7 +59,6 @@ public class CreateEventActivity extends AppCompatActivity {
                 date = selectedDate;
             }
         });
-
 
     }
 
@@ -79,7 +77,8 @@ public class CreateEventActivity extends AppCompatActivity {
         for(int i = 0; i < timeStrings.length; i++){
             if(t1SpinnerText.equals(timeStrings[i])){
                 firstTimeIndex = i;
-            } else if(t2SpinnerText.equals(timeStrings[i])){
+            }
+            else if(t2SpinnerText.equals(timeStrings[i])){
                 secondTimeIndex = i;
             }
         }
@@ -88,7 +87,8 @@ public class CreateEventActivity extends AppCompatActivity {
             for(int i = firstTimeIndex; i < secondTimeIndex; i++){
                 timesToDisplay.add(timeStrings[i]);
             }
-        }else{
+        }
+        else{
             for(int i = firstTimeIndex; i < timeStrings.length; i++){
                 timesToDisplay.add(timeStrings[i]);
             }
@@ -96,9 +96,10 @@ public class CreateEventActivity extends AppCompatActivity {
                 timesToDisplay.add(timeStrings[i]);
             }
         }
-
         return timesToDisplay;
     }
+
+
 
     public void createEvent(View view){
         String eventName = eventNameET.getText().toString();
@@ -115,14 +116,10 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         Event event = new Event(eventName, time1, time2, date, timeList);
-        Log.d(TAG, "Event Created" + date);
+        Log.d(TAG, "Event created: " + event.getName() + ", " + event.getDate());
 
-
-        firebaseHelper.addEventToFirestore(event);
-
-
-        // At this point, we need to set the docID of the local event
-        // We can do this by modifying the addEventToFirestore method
+        //At this point, we've added the new event to Firestore.
+        HomeActivity.firebaseHelper.addEventToFirestore(event);
 
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
@@ -131,11 +128,4 @@ public class CreateEventActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        String text = parent.getItemAtPosition(position).toString();
-//        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-//    }
-//    // This method is required, even if empty, for the OnItemSelectedListener to work
-//
-//    public void onNothingSelected(AdapterView<?> parent) { }
 }

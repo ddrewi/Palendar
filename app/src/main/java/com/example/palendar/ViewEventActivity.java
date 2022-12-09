@@ -30,7 +30,7 @@ public class ViewEventActivity extends AppCompatActivity {
 
         gridView.setAdapter(groupTimeAdapter);
     }
-    
+
 
     public void returnHome (View view) {
         Intent intent = new Intent(ViewEventActivity.this, HomeActivity.class);

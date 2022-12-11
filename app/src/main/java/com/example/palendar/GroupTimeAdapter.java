@@ -43,15 +43,15 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
 
         Log.d("FBH", "numUsers = " + numUsers);
 
-        //int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
-        //Log.d(TAG, "" + opacityValue);
+        int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
+        Log.d("FBH", "" + opacityValue);
 
 
         // Convert rgb ints to hex: https://stackoverflow.com/questions/3607858/convert-a-rgb-color-value-to-a-hexadecimal-string
 
 
         // replace 50 with opacity value
-        String hex = String.format("#%02x%02x%02x%02x", 50, 0, 255, 0);
+        String hex = String.format("#%02x%02x%02x%02x", opacityValue, 5, 102, 8);
 
         Log.d("peanuts", "" + hex);
         timeTV.setBackgroundColor(Color.parseColor(hex));

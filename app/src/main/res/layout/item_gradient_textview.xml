@@ -7,9 +7,7 @@
 
     <TextView
         android:id="@+id/itemGradientTextView"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:text="TextView"
+        style="@style/normalTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

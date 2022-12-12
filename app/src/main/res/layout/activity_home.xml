@@ -92,7 +92,15 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginBetweenSmall" />
 
-
+    <Button
+        android:id="@+id/switchScreenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch Screens"
+        android:onClick="switchEvent"
+        android:textColor="@color/primaryTextColor"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginTop" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

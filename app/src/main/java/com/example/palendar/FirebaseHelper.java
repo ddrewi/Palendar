@@ -170,6 +170,42 @@ public class FirebaseHelper {
     }
 
 
+    public void joinEvent(String code) {
+        //test to see if code is a valid event
+        //this method is overloaded and incorporates the interface to handle the asynch calls
+        joinEvent(code, new FirestoreCallback() {
+            @Override
+            public void onCallback(Event event) {
+                Log.i(TAG, "Inside joinEvent, onCallback " + currentEvent.getDocID());
+            }
+        });
+    }
+
+
+    private void joinEvent(String code, FirestoreCallback firestoreCallback){
+        db.collection("events").document(code).get()
+            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        docID = code;
+                        Log.d(TAG, "joinEvent successful " + docID);
+                        readData(firestoreCallback);
+                    } else {
+                        Log.d(TAG, "joinEvent not successful");
+                    }
+                }
+            });
+
+
+    }
+
+
+
+
+
+
+
 /*    private void joinEvent(String code, FirestoreCallback firestoreCallback){
         db.collection("events").document(code)
                 .get()
@@ -201,17 +237,13 @@ public class FirebaseHelper {
         return docID;
     }
 
+    public Event getCurrentEvent() {
+        return currentEvent;
+    }
 
     //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
     public interface FirestoreCallback {
         void onCallback(Event event);
     }
 
-    public FirebaseFirestore getDb() {
-        return db;
-    }
-
-    public void setDb(FirebaseFirestore db) {
-        this.db = db;
-    }
 }

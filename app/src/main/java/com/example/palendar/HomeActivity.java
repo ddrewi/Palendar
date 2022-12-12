@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     Button viewEventButton;
     Event selectedEvent;
     ArrayList<Event> userEvents;
+    Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,21 +138,35 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
-
-
     public void createEvent (View view) {
         Intent intent = new Intent(HomeActivity.this, CreateEventActivity.class);
         startActivity(intent);
     }
 
-    public void joinEvent(){
-        String eventName = joinCodeEditText.getText().toString();
-        
+    public void joinEvent (View view){
+        //assume that the code is correct
+        String code = joinCodeEditText.getText().toString();
+        firebaseHelper.joinEvent(code);
+
+
+        //Store inputted code
+        //Call Firebase Method with code as a string, boolean
+        //if successful, move to Fill Event Activity
+        // if unsucessful. throw toast
+
 
 
 
         //firebaseHelper.addUserToEvent(eventName);
+    }
+
+    public void switchEvent (View view){
+        event = firebaseHelper.getCurrentEvent();
+        Log.d("FBH", event.getName());
+        Intent intent = new Intent(HomeActivity.this, FillScheduleActivity.class);
+        //intent.putParcelableArrayListExtra(EVENT_VALUE, timeList);
+        intent.putExtra(EVENT_VALUE, event);
+        startActivity(intent);
     }
 
 }

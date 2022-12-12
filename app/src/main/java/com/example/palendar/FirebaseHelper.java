@@ -148,24 +148,33 @@ public class FirebaseHelper {
 
 
     private void readData(FirestoreCallback firestoreCallback) {
-        currentEvent = null;
-        db.collection("events").document(docID)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            currentEvent = task.getResult().toObject(Event.class);
-                            docID = currentEvent.getDocID();
-                            numUsers = currentEvent.getUsers().size();
-                            Log.d(TAG, "reached readData " + docID + " " + numUsers);
-                            //This line is necessary for onCallback
-                            firestoreCallback.onCallback(currentEvent);
-                        } else {
-                            Log.d(TAG, "grabbing current event not successful");
+        try {
+            currentEvent = null;
+            db.collection("events").document(docID)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            try{
+                                if (task.isSuccessful()) {
+                                    currentEvent = task.getResult().toObject(Event.class);
+                                    docID = currentEvent.getDocID();
+                                    numUsers = currentEvent.getUsers().size();
+                                    Log.d(TAG, "reached readData " + docID + " " + numUsers);
+                                    //This line is necessary for onCallback
+                                    firestoreCallback.onCallback(currentEvent);
+                                } else {
+                                    Log.d(TAG, "grabbing current event not successful");
+                                }
+                            } catch (Exception e){
+                                Log.d(TAG, "Join Code Error: " + e);
+                            }
                         }
-                    }
-                });
+                    });
+        } catch (Exception e){
+            Log.d(TAG, "Join Code Error: " + e);
+        }
+
 
     }
 

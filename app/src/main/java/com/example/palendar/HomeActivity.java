@@ -146,7 +146,12 @@ public class HomeActivity extends AppCompatActivity {
     public void joinEvent (View view){
         //assume that the code is correct
         String code = joinCodeEditText.getText().toString();
-        firebaseHelper.joinEvent(code);
+        try{
+            firebaseHelper.joinEvent(code);
+        } catch (Exception e){
+            Toast.makeText(HomeActivity.this, "Invalid Join Code", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void switchEvent (View view){

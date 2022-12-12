@@ -19,13 +19,15 @@
     <style name="titleTextView" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:textSize">@dimen/fontSizeLarge</item>
         <item name="android:textColor">@color/primaryColor</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/baloo_bhai_2_medium</item>
+        <item name="android:background">@drawable/text_view_background</item>
+        <item name="android:padding">@dimen/textPadding</item>
     </style>
 
     <style name="normalTextView" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:textSize">@dimen/fontSizeMedium</item>
         <item name="android:textColor">@color/primaryColor</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/baloo_bhai_2_medium</item>
     </style>
 
 
@@ -33,7 +35,7 @@
     <style name="editText" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:textSize">@dimen/fontSizeMedium </item>
         <item name="android:backgroundTint">@color/primaryColor</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/baloo_bhai_2_medium</item>
         <item name="android:layout_height">@dimen/editTextHeight</item>
         <item name="android:layout_width">@dimen/editTextWidth</item>
     </style>
@@ -48,7 +50,15 @@
         <item name="android:layout_rowWeight">1</item>
         <item name="android:layout_marginTop">6dp</item>
         <item name="android:background">@drawable/togglebutton_selector</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/baloo_bhai_2_medium</item>
+    </style>
+
+    <style name="CustomButton" parent="android:Widget.Button">
+        <item name="android:background">@drawable/custom_button</item>
+        <item name="backgroundTint">@color/primaryColor</item>
+        <item name="android:shadowRadius">10</item>
+        <item name="android:shadowColor">@color/black</item>
+        <item name="android:fontFamily">@font/baloo_bhai_2_medium</item>
     </style>
 
 

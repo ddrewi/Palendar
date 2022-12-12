@@ -4,10 +4,11 @@
     <dimen name="fontSizeMedium">22sp</dimen>
     <dimen name="fontSizeSmall">16sp</dimen>
 
-    <dimen name="textPadding">6dp</dimen>
+
+    <dimen name="textPadding">10dp</dimen>
 
     <dimen name="marginTop">40dp</dimen>
-    <dimen name="marginBetween">30dp</dimen>
+    <dimen name="marginBetween">50dp</dimen>
     <dimen name="marginBetweenSmall">15dp</dimen>
 
     <dimen name="smallButtonWidth">100dp</dimen>

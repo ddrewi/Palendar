@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/primaryLightColor">
 
     <TextView
         android:id="@+id/upcomingText"
@@ -19,13 +20,16 @@
 
     <!-- events should ideally be a spinner -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/buttonHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginBetween"
+        android:layout_gravity="center_horizontal"
         >
 
         <Spinner
             android:id="@+id/eventSpinner"
+            android:background="@drawable/spinner_background"
+
             android:layout_width="@dimen/spinnerWidth"
             android:layout_height="@dimen/spinnerHeight"
             android:layout_marginStart="20dp"
@@ -34,8 +38,10 @@
 
         <Button
             android:id="@+id/viewEventsButton"
+            style="@style/CustomButton"
             android:layout_width="@dimen/smallButtonWidth"
             android:layout_height="@dimen/buttonHeight"
+            android:layout_marginStart="@dimen/marginBetweenSmall"
             android:layout_marginEnd="20dp"
             android:text="View"
             android:textColor="@color/primaryTextColor"></Button>
@@ -47,6 +53,7 @@
 
     <Button
         android:id="@+id/createEventButton"
+        style="@style/CustomButton"
         android:layout_width="@dimen/largeButtonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:text="Create an Event"
@@ -75,6 +82,7 @@
 
     <Button
         android:id="@+id/joinButton"
+        style="@style/CustomButton"
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:text="Join"
@@ -85,6 +93,7 @@
 
     <Button
         android:id="@+id/logout"
+        style="@style/CustomButton"
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:text="Logout"
@@ -94,6 +103,7 @@
 
     <Button
         android:id="@+id/switchScreenButton"
+        style="@style/CustomButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Switch Screens"

@@ -49,13 +49,10 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
 
         // Convert rgb ints to hex: https://stackoverflow.com/questions/3607858/convert-a-rgb-color-value-to-a-hexadecimal-string
 
-
-        // replace 50 with opacity value
         String hex = String.format("#%02x%02x%02x%02x", opacityValue, 5, 102, 8);
 
         Log.d("peanuts", "" + hex);
         timeTV.setBackgroundColor(Color.parseColor(hex));
-        //timeTV.setText("" + opacityValue);
         return timeTV;
     }
 }

@@ -123,7 +123,6 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(CreateEventActivity.this, FillScheduleActivity.class);
-        //intent.putParcelableArrayListExtra(EVENT_VALUE, timeList);
         intent.putExtra(EVENT_VALUE, event);
         startActivity(intent);
     }

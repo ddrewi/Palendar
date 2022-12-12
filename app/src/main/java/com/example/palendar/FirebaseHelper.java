@@ -201,30 +201,6 @@ public class FirebaseHelper {
     }
 
 
-
-
-
-
-
-/*    private void joinEvent(String code, FirestoreCallback firestoreCallback){
-        db.collection("events").document(code)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            currentEvent = task.getResult().toObject(Event.class);
-                            currentEvent.get
-                        }
-
-                    }
-                                       }
-
-    }*/
-
-//on data change listener
-
-
     public int getNumUsers() {
         return numUsers;
     }

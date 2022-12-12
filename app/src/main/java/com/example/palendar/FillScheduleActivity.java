@@ -37,7 +37,9 @@ public class FillScheduleActivity extends AppCompatActivity {
 
             //Here, we store the created event locally.
             myEvent = intent.getParcelableExtra(CreateEventActivity.EVENT_VALUE);
-            myEvent = intent.getParcelableExtra(HomeActivity.EVENT_VALUE);
+            if(myEvent==null){
+                myEvent = intent.getParcelableExtra(HomeActivity.EVENT_VALUE);
+            }
 
             TimeAdapter timeArrayAdapter = new TimeAdapter(this, myEvent.getTimes());
 

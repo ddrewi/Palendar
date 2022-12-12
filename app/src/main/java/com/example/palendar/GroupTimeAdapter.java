@@ -43,7 +43,7 @@ public class GroupTimeAdapter extends ArrayAdapter<Time> {
 
         Log.d("FBH", "numUsers = " + numUsers);
 
-        int opacityValue = (int) (myTime.getCounter()/numUsers * 255);
+        int opacityValue = (int) (1.0 * myTime.getCounter()/numUsers * 255);
         Log.d("FBH", "" + opacityValue);
 
 

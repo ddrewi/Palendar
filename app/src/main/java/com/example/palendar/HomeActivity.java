@@ -80,30 +80,6 @@ public class HomeActivity extends AppCompatActivity {
         // ***************** NEED WAY TO ADD EVENTS FROM FIRESTORE HERE ***************************
 
         userEvents = new ArrayList<>();
-        /*CollectionReference allEvents = firebaseHelper.getDb().collection("events");
-        firebaseHelper.getDb().collection("events")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot doc : task.getResult()) {
-                                Log.d("peanuts", doc.getId() + " => " + doc.getData());
-                                Event event = doc.toObject(Event.class);
-                                userEvents.add(event);
-                                Log.d("peanuts", "" + userEvents.get(0).getName());
-                                if(event.getUsers().contains(firebaseHelper.getmAuth().getUid())){
-                                    userEvents.add(event);
-                                    Log.d("peanuts", "" + firebaseHelper.getmAuth().getUid());
-                                }
-                            }
-                        } else {
-                            Log.d("peanuts", "Error getting documents: ", task.getException());
-                        }
-                        Log.d("peanuts", "" + userEvents.get(0).getName());
-                    }
-                });*/
-
         ArrayList<String> userEventNames = new ArrayList<String>();
         for(int i = 0; i < userEvents.size(); i++){
             userEventNames.add(userEvents.get(i).getName());

@@ -9,6 +9,7 @@
 
     <dimen name="marginTop">40dp</dimen>
     <dimen name="marginBetween">50dp</dimen>
+    <dimen name="marginBetweenMed">30dp</dimen>
     <dimen name="marginBetweenSmall">15dp</dimen>
 
     <dimen name="smallButtonWidth">100dp</dimen>

@@ -36,16 +36,17 @@
         android:layout_gravity="center"
         android:text="Update Availability"
         android:textColor="@color/primaryTextColor"
-        android:onClick="updateAvailability"/>
+        android:onClick="updateAvailability"
+        android:layout_marginTop="@dimen/marginBetweenMed"/>
 
     <Button
         android:id="@+id/submitAvailabilityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/marginBetweenMed"
         android:onClick="switchScreens"
-        android:text="Submit"
+        android:text="View Group Availability"
         android:textColor="@color/white"/>
 
 
